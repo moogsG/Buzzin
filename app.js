@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 
 const routes = require('./routes/index');
 const users = require('./routes/users');
+const maps = require('./routes/maps');
 
 const app = express();
 
@@ -22,6 +23,8 @@ app.use(cookieParser());
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/maps', maps);
+
 
 /// catch 404 and forwarding to error handler
 
