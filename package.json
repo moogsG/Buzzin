@@ -1,0 +1,27 @@
+{
+  "name": "WikiMap",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "devDependencies": {
+    "gulp": "latest",
+    "gulp-jasmine": "^2.4.2",
+    "gulp-jshint": "latest",
+    "gulp-livereload": "^1.5.0",
+    "gulp-nodemon": "latest",
+    "gulp-sass": "^3.1.0",
+    "gulp-watch": "~0.6.4",
+    "jshint": "latest"
+  },
+  "dependencies": {
+    "express": "~4.0.0",
+    "cookie-parser": "~1.0.1",
+    "body-parser": "~1.0.0",
+    "debug": "~0.7.4",
+    "ejs": "~0.8.5",
+    "knex": "^0.13.0",
+    "pg": "^7.3.0"
+  }
+}
