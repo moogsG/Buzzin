@@ -11,6 +11,9 @@ const maps = require('./routes/maps');
 
 const app = express();
 
+const settings = require("./settings"); // settings.json
+module.exports = require('knex')(require('./knexfile')['development']);
+
 /*Cookie Session
 ****************
 */
