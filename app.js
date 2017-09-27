@@ -12,16 +12,18 @@ const maps = require('./routes/maps');
 const app = express();
 
 /*Cookie Session
-****************
-*/
+ ****************
+ */
 app.use(cookieSession({
-  name: 'session',
-  keys: ['key1', 'key2']
+    name: 'session',
+    keys: ['key1', 'key2']
 }))
 
 /*View Engine
-*************
-*/
+ *************
+ */
+
+//THis is a test comment\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 app.use(express.static('public'));
 
