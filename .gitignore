@@ -15,7 +15,6 @@ pids
 lib-cov
 .editorconfig
 .jshintrc
-bin/
 
 # Coverage directory used by tools like istanbul
 coverage

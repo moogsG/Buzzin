@@ -2,7 +2,7 @@
 
 const express = require('express');
 const path = require('path');
-const cookieParser = require('cookie-parser');
+const cookieSession = require('cookie-session');
 const bodyParser = require('body-parser');
 
 const routes = require('./routes/index');
@@ -11,8 +11,10 @@ const maps = require('./routes/maps');
 
 const app = express();
 
-const settings = require("./settings"); // settings.json
-module.exports = require('knex')(require('./knexfile')['development']);
+app.use(express.static(__dirname + '/public'));
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 
 /*Cookie Session
  ****************
@@ -20,22 +22,19 @@ module.exports = require('knex')(require('./knexfile')['development']);
 app.use(cookieSession({
     name: 'session',
     keys: ['key1', 'key2']
-}))
+}));
 
 /*View Engine
  *************
  */
-
-//THis is a test comment\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-
-app.use(express.static('public'));
-
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 app.use(bodyParser.json());
-app.use(cookieParser());
 
+/*Routes
+*******
+*/
 app.use('/', routes);
 app.use('/users', users);
 app.use('/maps', maps);
