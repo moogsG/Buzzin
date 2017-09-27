@@ -11,7 +11,17 @@ const maps = require('./routes/maps');
 
 const app = express();
 
-// view engine setup
+/*Cookie Session
+****************
+*/
+app.use(cookieSession({
+  name: 'session',
+  keys: ['key1', 'key2']
+}))
+
+/*View Engine
+*************
+*/
 
 app.use(express.static('public'));
 
