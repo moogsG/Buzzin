@@ -33,10 +33,19 @@
         line-height: 30px;
         padding-left: 10px;
     }
+
+    .textbox {
+        position: absolute;
+        width: 300px;
+        height: 300px;
+        background-color: #dcdee2;
+        margin-left: 50%;
+    }
     </style>
 </head>
 
 <body>
+    <div id="textbox"></div>
     <div id="floating-panel">
         <input onclick="clearMarkers();" type=button value="Hide Markers">
         <input onclick="showMarkers();" type=button value="Show All Markers">
@@ -81,12 +90,11 @@
 
         // This event listener will call addMarker() when the map is clicked.
         map.addListener('click', function(event) {
-            console.log(event);
             addMarker(event.latLng);
+            var $div = $('<div>').addClass('textbox')
+            $('#textbox').append($div)
         });
 
-        // Adds a marker at the center of the map.
-        addMarker(haightAshbury);
     }
 
     // Adds a marker to the map and push to the array.
@@ -94,6 +102,8 @@
         var marker = new google.maps.Marker({
             position: location,
             map: map,
+            draggable: true,
+            animation: google.maps.Animation.DROP,
             icon: iconBase
         });
         markers.push(marker);
