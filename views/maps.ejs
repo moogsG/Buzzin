@@ -2,6 +2,7 @@
 <html>
 
 <head>
+<<<<<<< HEAD
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
     <title>Places Searchbox</title>
@@ -217,5 +218,27 @@
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnAHEAaAO9M1jgkn9jg4iQGS6xt_Vtexc&libraries=places&callback=GeoLocation" async defer></script>
 </body>
+=======
+    <% include ./partials/_header %>
+<<<<<<< HEAD
+</head>
 
+=======
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnAHEAaAO9M1jgkn9jg4iQGS6xt_Vtexc&callback=initMap">
+    </script>
+    <script src="/scripts/maps.js"></script>
+  </head>
+  <body>
+              <h1>Maps</h1>
+    <p>Welcome to <%= title %></p>
+    <div class="container">
+        <div class="row">
+
+    <% include ./partials/_mapsShow %>
+        </div>
+    </div>
+>>>>>>> master
+
+  </body>
 </html>
+>>>>>>> feature/users
