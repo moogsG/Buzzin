@@ -65,6 +65,11 @@
             width: 64%;
             height: 5em;
         }
+
+        .search {
+            margin-left: 30%;
+            border-radius: 10px;
+        }
         </style>
 </head>
 
@@ -85,6 +90,7 @@
                 <!-- Modal content-->
                 <div class="addmap" id="location">
                     <span class="title">Select Locations</span>
+                    <input class="search" id="search" type="text" placeholder="Search">
                     <% include ./partials/_mapsShow %>
                         <div class="info" id="MapInfo">
                             <form action="/registered" method="POST">

@@ -47,6 +47,8 @@ body {
     <input onclick="showMarkers();" type=button value="Show All Markers">
     <input onclick="deleteMarkers();" type=button value="Delete Markers">
 </div> -->
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnAHEAaAO9M1jgkn9jg4iQGS6xt_Vtexc&libraries=places&callback=initMap">
+</script>
 <div id="map"></div>
 <script>
 $(document).ready(function() {
@@ -87,18 +89,15 @@ $(document).ready(function() {
 
 
 
-            var marker = new google.maps.Marker({
-                position: center,
-                map: map
-            });
+            var marker = new google.maps.Marker({ position: center, map: map });
 
             // This event listener will call addMarker() when the map is clicked.
             map.addListener('click', function(event) {
                 addMarker(event.latLng);
                 $("#MapInfo").slideToggle();
             });
-
         }
+
 
         $('.btn-info').on('click', function() {
 
@@ -150,7 +149,7 @@ $(document).ready(function() {
     });
 
 
+
+
 });
-</script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnAHEAaAO9M1jgkn9jg4iQGS6xt_Vtexc&callback=initMap">
 </script>
