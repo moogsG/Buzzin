@@ -21,6 +21,7 @@ exports.up = function(knex, Promise) {
       table.string('title');
       table.string('description');
       table.string('image');
+      table.string('address');
     }),
     knex.schema.createTable('fav_maps', (table) => {
       table.increments();
