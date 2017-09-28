@@ -3,17 +3,22 @@ const express = require('express');
 const bcrypt = require('bcrypt');
 const bodyParser = require('body-parser');
 const usersRoutes = express.Router();
-
+const cookieSession = require('cookie-session');
 
 /*Knex
-******
-*Gets connect script from knexfile
-*/
+ ******
+ *Gets connect script from knexfile
+ */
 const knex = require('knex')(require('../knexfile').development);
 
 usersRoutes.use(bodyParser.urlencoded({
   extended: true
 }));
+
+usersRoutes.use(cookieSession({
+  name: 'session',
+  keys: ['key1', 'key2']
+}))
 
 /* GET users listing. */
 usersRoutes.get('/', (req, res) => {
@@ -21,10 +26,13 @@ usersRoutes.get('/', (req, res) => {
 });
 
 /* GET partials
-***************
-*/
+ ***************
+ */
 usersRoutes.get('/register', (req, res) => {
   res.render('./partials/users/_userRegister');
+});
+usersRoutes.get('/login', (req, res) => {
+  res.render('./partials/users/_login');
 });
 
 /*Login
@@ -32,25 +40,41 @@ usersRoutes.get('/register', (req, res) => {
  *Could be put request
  *Fix later
  */
+const login = (req, res) => {
+  if (!req.session.username) {
+    let email = req.body.email;
+    knex('users')
+      .select()
+      .where({
+        'email': email
+      })
+      .then((login) => {
+        if (bcrypt.compareSync(req.body.password, login[0].password)) {
+          req.session.username = login[0].id;
+          console.log('password matched');
+          res.redirect('/users');
+        } else {
+          console.log('Passwords do not match!');
+          res.render('./partials/users/_userShow'); //Need to add error
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+      })
+  } else {
+    console.log('Already logged in!');
+    res.redirect('/users'); //Need to add error
+  }
+}
+
 usersRoutes.post('/login', (req, res) => {
-  knex('users').select()
-    .where('user_name', '=', req.body.username)
-    .andWhere('password', '=', bcrypt.compareSync(req.body.password))
-    .then((login) => {
-      req.session.username = login[0].id;
-    })
-    .catch((err) => {
-      console.error(err);
-    })
-    .then(() => {
-      knex.destroy();
-    });
-    res.redirect('/');
+  login(req, res);
 });
 
 /*Register
-**********
-*/
+ **********
+ */
+
 usersRoutes.post('/register', (req, res) => {
 
   /*NEEDS CHECKS FOR SHIT*/
@@ -62,6 +86,7 @@ usersRoutes.post('/register', (req, res) => {
     password: hash,
     email: req.body.email
   };
+
   knex('users').insert(values)
     .then(() => {
       console.log('Registered New User');
@@ -70,11 +95,8 @@ usersRoutes.post('/register', (req, res) => {
       console.error(err);
     })
     .then(() => {
-      knex.destroy();
+      login(req, res);
     });
-
-  req.session.username = req.body.username;
-  res.redirect('/');
 });
 
 /*Clears cookies username
@@ -82,9 +104,9 @@ usersRoutes.post('/register', (req, res) => {
  *Clears username cookie
  *Returns to /urls
  */
-usersRoutes.post('/logout', (req, res) => {
+usersRoutes.get('/logout', (req, res) => {
   req.session = null;
-  res.redirect('/');
+  res.redirect('/users');
 });
 
 module.exports = usersRoutes;
