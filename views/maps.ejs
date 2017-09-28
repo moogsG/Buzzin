@@ -155,6 +155,21 @@
             map: map
         });
 
+        map.addListener('click', function(event) {
+            addMarker(event.latLng);
+        });
+
+        function addMarker(location) {
+            var marker = new google.maps.Marker({
+                position: location,
+                map: map,
+                draggable: true,
+                animation: google.maps.Animation.DROP,
+            });
+            markers.push(marker);
+        }
+
+
         // Create the search box and link it to the UI element.
         var input = document.getElementById('pac-input');
         var searchBox = new google.maps.places.SearchBox(input);
@@ -175,11 +190,7 @@
                 return;
             }
 
-            // Clear out the old markers.
-            markers.forEach(function(marker) {
-                marker.setMap(null);
-            });
-            markers = [];
+
 
             // For each place, get the icon, name and location.
             var bounds = new google.maps.LatLngBounds();
