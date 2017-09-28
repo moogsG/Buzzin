@@ -2,20 +2,25 @@
 <html>
   <head>
     <% include ./partials/_header %>
+    <script src="/scripts/register.js"></script>
   </head>
   <body>
     <h1>Users</h1>
+
+    <button id="registerBtn" class="btn btn-primary">Register</button>
+
     <div class="register">
         <div class="container">
             <div class="row">
-                <% include ./partials/_userRegister %>
+                <div id="register">
+                </div>
             </div>
         </div>
     </div>
-     <div class="register">
+     <div class="login">
         <div class="container">
             <div class="row">
-                <% include ./partials/_login %>
+                <% include ./partials/users/_login %>
             </div>
         </div>
     </div>

@@ -20,6 +20,13 @@ usersRoutes.get('/', (req, res) => {
   res.render('users');
 });
 
+/* GET partials
+***************
+*/
+usersRoutes.get('/register', (req, res) => {
+  res.render('./partials/users/_userRegister');
+});
+
 /*Login
  *******
  *Could be put request
