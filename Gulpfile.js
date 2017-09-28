@@ -17,7 +17,7 @@ gulp.task('nodemon', () => {
 
 //SASS
 gulp.task('sass', () => {
-  return gulp.src('./public/**/*.scss')
+  gulp.src('./public/**/*.scss')
     .pipe(sass.sync().on('error', sass.logError))
     .pipe(gulp.dest('./public'));
 });

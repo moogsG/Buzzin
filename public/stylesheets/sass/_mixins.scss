@@ -1,0 +1,13 @@
+// Colours
+
+
+//@media breakpoints
+$breakpoints: (phone: 320px, tablet: 768px, desktop: 1024px);
+
+//Main mixins
+@mixin transition($time) {
+    -moz-transition: all $time ease-in;
+    -o-transition: all $time ease-in;
+    -webkit-transition: all $time ease-in;
+    transition: all $time ease-in;
+}
