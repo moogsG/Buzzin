@@ -1,8 +1,0 @@
-{
-  "user": "baljit",
-  "password": "wikimap",
-  "database": "wikimap",
-  "hostname": "localhost",
-  "port": 5432,
-  "ssl": true
-}
