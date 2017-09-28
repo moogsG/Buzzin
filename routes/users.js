@@ -9,7 +9,7 @@ const usersRoutes = express.Router();
 ******
 *Gets connect script from knexfile
 */
-const knex = require('knex')(require('../public/scripts/knexfile').development);
+const knex = require('knex')(require('../knexfile').development);
 
 usersRoutes.use(bodyParser.urlencoded({
   extended: true
@@ -34,7 +34,7 @@ usersRoutes.get('/register', (req, res) => {
  */
 usersRoutes.post('/login', (req, res) => {
   knex('users').select()
-    .where('username', '=', req.body.username)
+    .where('user_name', '=', req.body.username)
     .andWhere('password', '=', bcrypt.compareSync(req.body.password))
     .then((login) => {
       req.session.username = login[0].id;
@@ -58,7 +58,7 @@ usersRoutes.post('/register', (req, res) => {
   let hash = bcrypt.hashSync(req.body.password, 10);
 
   let values = {
-    username: req.body.username,
+    user_name: req.body.username,
     password: hash,
     email: req.body.email
   };

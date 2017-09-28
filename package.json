@@ -14,8 +14,7 @@
     "gulp-nodemon": "latest",
     "gulp-sass": "^3.1.0",
     "gulp-watch": "~0.6.4",
-    "jshint": "latest",
-    "sqlite3": "^3.1.4"
+    "jshint": "latest"
   },
   "dependencies": {
     "body-parser": "^1.15.2",
