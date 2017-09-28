@@ -100,13 +100,17 @@
     <input id="pac-input" class="controls" type="text" placeholder="Search Box">
     <div id="map"></div>
     <script>
-    // This example adds a search box to a map, using the Google Place Autocomplete
-    // feature. People can enter geographical searches. The search box will return a
-    // pick list containing a mix of places and predicted search terms.
-
-    // This example requires the Places library. Include the libraries=places
-    // parameter when you first load the API. For example:
-    // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+    const knex = require('knex')({
+        dialect: 'postgresql',
+        connection: {
+            user: baljit,
+            password: wikimap,
+            database: wikimap,
+            hostname: localhost,
+            port: 5432,
+            ssl: true
+        }
+    });
 
     function GeoLocation() {
         if (navigator.geolocation) {
@@ -126,7 +130,8 @@
     }
 
     function initAutocomplete(latitude, longitude) {
-
+        var geocoder = new google.maps.Geocoder();
+        var location = new google.maps.LatLng(latitude, longitude);
         var center = { lat: latitude, lng: longitude };
 
         var map = new google.maps.Map(document.getElementById('map'), {
@@ -140,18 +145,12 @@
             map: map
         });
 
-        var geocoder = new google.maps.Geocoder();
-
-        var location = new google.maps.LatLng(latitude, longitude);
-
         geocoder.geocode({ 'latLng': location }, function(results, status) {
-            if (status == google.maps.GeocoderStatus.OK) { // if geocode success
-                var add = results[0].formatted_address; // if address found, pass to processing function
+            if (status == google.maps.GeocoderStatus.OK) {
+                var add = results[0].formatted_address;
                 console.log(add);
             }
         });
-
-
 
         // Create the search box and link it to the UI element.
         var input = document.getElementById('pac-input');
@@ -208,11 +207,14 @@
                 } else {
                     bounds.extend(place.geometry.location);
                 }
+
+
+                console.log(place.name)
+                console.log(place.formatted_address)
+
             });
             map.fitBounds(bounds);
         });
-
-
     }
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnAHEAaAO9M1jgkn9jg4iQGS6xt_Vtexc&libraries=places&callback=GeoLocation" async defer></script>
