@@ -208,7 +208,6 @@
             searchBox.setBounds(map.getBounds());
         });
 
-        var markers = [];
         // Listen for the event fired when the user selects a prediction and retrieve
         // more details for that place.
         searchBox.addListener('places_changed', function() {
@@ -238,7 +237,6 @@
                 // Create a marker for each place.
                 markers.push(new google.maps.Marker({
                     map: map,
-                    icon: icon,
                     title: place.name,
                     position: place.geometry.location
                 }));
