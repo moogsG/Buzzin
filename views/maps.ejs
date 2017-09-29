@@ -2,34 +2,120 @@
 <html>
 
 <head>
-<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <% include ./partials/_header %>
-    <script src="/scripts/maps.js"></script>
-
+        <script src="/scripts/maps.js"></script>
         <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBK7BCsfqIsm19orAsbdqLqYCODKv-nYA4&libraries=places"></script>
+        <style>
+        .hexagon {
+            position: relative;
+            width: 300px;
+            height: 173.21px;
+            margin: 86.60px 0;
+            background-image: url("https://maps.googleapis.com/maps/api/staticmap?     center=Brooklyn+Bridge,New+York,NY&zoom=13&size=600x300&maptype=roadmap&markers=color:blue%7Clabel:S%7C40.702147,-74.015794&markers=color:green%7Clabel:G%7C40.711614,-74.012318&markers=color:red%7Clabel:C%7C40.718217,-73.998284&sensor=false");
+            background-size: auto 346.4102px;
+            background-position: center;
+        }
 
+        .hexTop,
+        .hexBottom {
+            position: absolute;
+            z-index: 1;
+            width: 212.13px;
+            height: 212.13px;
+            overflow: hidden;
+            -webkit-transform: scaleY(0.5774) rotate(-45deg);
+            -ms-transform: scaleY(0.5774) rotate(-45deg);
+            transform: scaleY(0.5774) rotate(-45deg);
+            background: inherit;
+            left: 43.93px;
+        }
+        /*counter transform the bg image on the caps*/
 
+        .hexTop:after,
+        .hexBottom:after {
+            content: "";
+            position: absolute;
+            width: 300.0000px;
+            height: 173.20508075688775px;
+            -webkit-transform: rotate(45deg) scaleY(1.7321) translateY(-86.6025px);
+            -ms-transform: rotate(45deg) scaleY(1.7321) translateY(-86.6025px);
+            transform: rotate(45deg) scaleY(1.7321) translateY(-86.6025px);
+            -webkit-transform-origin: 0 0;
+            -ms-transform-origin: 0 0;
+            transform-origin: 0 0;
+            background: inherit;
+        }
+
+        .hexTop {
+            top: -106.0660px;
+        }
+
+        .hexTop:after {
+            background-position: center top;
+        }
+
+        .hexBottom {
+            bottom: -106.0660px;
+        }
+
+        .hexBottom:after {
+            background-position: center bottom;
+        }
+
+        .hexagon:after {
+            content: "";
+            position: absolute;
+            top: 0.0000px;
+            left: 0;
+            width: 300.0000px;
+            height: 173.2051px;
+            z-index: 2;
+            background: inherit;
+        }
+        </style>
 </head>
 
 <body>
- <div id="map"></div>
-
-<div>
-<!-- <input id="address" type="textbox" value="calgary, Alberta">
+    <div id="map"></div>
+    <div>
+        <!-- <input id="address" type="textbox" value="calgary, Alberta">
 <input type="button" value="Encode" onclick="codeAddress()"> -->
-    <button onclick="search()"></button>
-    <input id="pac-input" class="controls" type="text" placeholder="Search Box">
-<div id="form">
-      <table>
-      <tr><td>Name:</td> <td><input type='text' id='name'/> </td> </tr>
-      <tr><td>Address:</td> <td><input type='text' id='address'/> </td> </tr>
-      <tr><td>Type:</td> <td><select id='type'> +
-                 <option value='bar' SELECTED>bar</option>
-                 <option value='restaurant'>restaurant</option>
-                 </select> </td></tr>
-                 <tr><td></td><td><input type='button' value='Save' onclick='saveData()'/></td></tr>
-      </table>
+        <button onclick="search()"></button>
+        <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+        <div id="form">
+            <table>
+                <tr>
+                    <td>Name:</td>
+                    <td>
+                        <input type='text' id='name' /> </td>
+                </tr>
+                <tr>
+                    <td>Address:</td>
+                    <td>
+                        <input type='text' id='address' /> </td>
+                </tr>
+                <tr>
+                    <td>Type:</td>
+                    <td>
+                        <select id='type'> +
+                            <option value='bar' SELECTED>bar</option>
+                            <option value='restaurant'>restaurant</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type='button' value='Save' onclick='saveData()' />
+                        <input type='button' value='Screenshot' onclick='Screenshot()' />
+                    </td>
+                </tr>
+            </table>
+        </div>
     </div>
-
-  </div>
+    <div id="hex" class="hexagon">
+        <div class="hexTop"></div>
+        <div class="hexBottom"></div>
+    </div>
+</body>
