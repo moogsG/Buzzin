@@ -6,30 +6,18 @@
 
     <% include ./partials/_header %>
     <script src="/scripts/maps.js"></script>
-
-        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBK7BCsfqIsm19orAsbdqLqYCODKv-nYA4&libraries=places"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBK7BCsfqIsm19orAsbdqLqYCODKv-nYA4&libraries=places"></script>
+<script src="/scripts/mapsAjax.js"></script>
 
 
 </head>
 
 <body>
- <div id="map"></div>
+    <button id="newMapBtn" class="btn btn-primary">Create Map</button>
+    <button id="showMaps" class="btn btn-primary">View Maps!</button>
+    <button id="editMap" dataID="17">Edit</button>
+    <div class="map">
 
-<div>
-<!-- <input id="address" type="textbox" value="calgary, Alberta">
-<input type="button" value="Encode" onclick="codeAddress()"> -->
-    <button onclick="search()"></button>
-    <input id="pac-input" class="controls" type="text" placeholder="Search Box">
-<div id="form">
-      <table>
-      <tr><td>Name:</td> <td><input type='text' id='name'/> </td> </tr>
-      <tr><td>Address:</td> <td><input type='text' id='address'/> </td> </tr>
-      <tr><td>Type:</td> <td><select id='type'> +
-                 <option value='bar' SELECTED>bar</option>
-                 <option value='restaurant'>restaurant</option>
-                 </select> </td></tr>
-                 <tr><td></td><td><input type='button' value='Save' onclick='saveData()'/></td></tr>
-      </table>
     </div>
-
-  </div>
+<div id="map"></div>
+</body>

@@ -1,9 +1,23 @@
+$(function() {
+  $('#showMaps').on('click', function(event) {
+    event.preventDefault();
+
+    $('.map')
+      .empty()
+      .load('/maps/show')
+      .then(initMap());
+
+  });
+
+});
+
 var map, infoWindow;
 var geocoder;
+var markers = [];
+
 //Creates map
-$(function() {
-  initMap();
-})
+
+
 
 function initMap() {
   geocoder = new google.maps.Geocoder();
@@ -16,11 +30,6 @@ function initMap() {
     mapTypeId: 'roadmap'
   });
   infoWindow = new google.maps.InfoWindow;
-
-  infowindow = new google.maps.InfoWindow({
-    content: document.getElementById('form')
-  });
-
   messagewindow = new google.maps.InfoWindow({
     content: document.getElementById('message')
   });
@@ -31,6 +40,7 @@ function initMap() {
       position: event.latLng,
       map: map
     });
+    markers.push(marker);
     /*  google.maps.event.addListener(marker, 'click', function() {
         infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
           'Place ID: ' + place.description + '<br>' +
@@ -45,15 +55,100 @@ function initMap() {
         if (status == google.maps.GeocoderStatus.OK) {
           if (results[0]) {
             var address = results[0].formatted_address;
-            alert(typeof address);
             $('#address').val(address);
           }
         }
       });
-      infowindow.open(map, marker);
+      infowindow.open(map, this);
     });
   })
+  $('#editMap').on('click', function(event) {
+    event.preventDefault();
+    var mapID = $(this).attr('dataID');
+    $('.map').empty();
+      editMap(mapID);
+      console.log('msg');
+  });
   curentLocation();
+}
+
+function editMap(mapID) {
+  geocoder = new google.maps.Geocoder();
+  window.map = new google.maps.Map(document.getElementById('map'), {
+    center: {
+      lat: -34.397,
+      lng: 150.644
+    },
+    zoom: 10,
+    mapTypeId: google.maps.MapTypeId.HYBRID
+  });
+  infoWindow = new google.maps.InfoWindow;
+  messagewindow = new google.maps.InfoWindow({
+    content: document.getElementById('message')
+  });
+
+  google.maps.event.addListener(map, 'click', function(event) {
+
+    marker = new google.maps.Marker({
+      position: event.latLng,
+      map: map
+    });
+    markers.push(marker);
+    /*  google.maps.event.addListener(marker, 'click', function() {
+        infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
+          'Place ID: ' + place.description + '<br>' +
+          place.formatted_address + '</div>');
+        infowindow.open(map, this);
+      });*/
+
+    google.maps.event.addListener(marker, 'click', function() {
+      geocoder.geocode({
+        'latLng': event.latLng
+      }, function(results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+          if (results[0]) {
+            var address = results[0].formatted_address;
+            $('#address').val(address);
+          }
+        }
+      });
+      infowindow.open(map, this);
+    });
+  })
+
+  curentLocation();
+}
+
+function showMarkers() {
+  setMapOnAll(map);
+}
+
+function setMapOnAll(map) {
+  for (var i = 0; i < markers.length; i++) {
+    markers[i].setMap(map);
+  }
+}
+
+function clearMarkers() {
+  setMapOnAll(null);
+}
+
+/*  var placeLoc = place.geometry.location;
+  var marker = new google.maps.Marker({
+    map: map,
+    position: place.geometry.location
+  });
+
+  google.maps.event.addListener(marker, 'click', function() {
+    infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
+      'Place ID: ' + place.description + '<br>' +
+      place.formatted_address + '</div>');
+    infowindow.open(map, this);
+  });*/
+
+function editMarker() {
+  $('#name').val($('#placeName').text());
+  $('#address').val($('#placeAddress').text());
 }
 
 function curentLocation() {
@@ -95,15 +190,14 @@ function codeAddress() {
 
       });
 
-      alert(address)
 
     } else {}
   });
 };
 
-function search() {
-  infowindow = new google.maps.InfoWindow();
 
+function search() {
+  infoWindow = new google.maps.InfoWindow;
   var input = document.getElementById('pac-input');
   var searchBox = new google.maps.places.SearchBox(input);
   map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
@@ -113,7 +207,6 @@ function search() {
     searchBox.setBounds(map.getBounds());
   });
 
-  var markers = [];
   // Listen for the event fired when the user selects a prediction and retrieve
   // more details for that place.
   searchBox.addListener('places_changed', function() {
@@ -124,15 +217,8 @@ function search() {
       return;
     }
 
-    // Clear out the old markers.
-    markers.forEach(function(marker) {
-      marker.setMap(null);
-    });
-    markers = [];
-
     // For each place, get the icon, name and location.
     var bounds = new google.maps.LatLngBounds();
-    alert(bounds);
     places.forEach(function(place) {
       if (!place.geometry) {
         console.log("Returned place contains no geometry");
@@ -159,29 +245,14 @@ function createMarker(place) {
   });
 
   google.maps.event.addListener(marker, 'click', function() {
-    infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
-      'Place ID: ' + place.description + '<br>' +
+    infowindow.setContent('<div><strong><span id="placeName">' + place.name + '</span></strong><br>' +
+      'Place ID: <span id="placeAddress">' +
       place.formatted_address + '</div>');
     infowindow.open(map, this);
   });
 }
 
-function saveData() {
-  var name = escape(document.getElementById('name').value);
-  var address = escape(document.getElementById('address').value);
-  var type = document.getElementById('type').value;
-  var latlng = marker.getPosition();
-  var url = 'phpsqlinfo_addrow.php?name=' + name + '&address=' + address +
-    '&type=' + type + '&lat=' + latlng.lat() + '&lng=' + latlng.lng();
 
-  downloadUrl(url, function(data, responseCode) {
-
-    if (responseCode == 200 && data.length <= 1) {
-      infowindow.close();
-      messagewindow.open(map, marker);
-    }
-  });
-}
 
 function downloadUrl(url, callback) {
   var request = window.ActiveXObject ?
