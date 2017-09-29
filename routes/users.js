@@ -18,7 +18,7 @@ usersRoutes.use(bodyParser.urlencoded({
 usersRoutes.use(cookieSession({
   name: 'session',
   keys: ['key1', 'key2']
-}))
+}));
 
 /* GET users listing. */
 usersRoutes.get('/', (req, res) => {
@@ -60,12 +60,12 @@ const login = (req, res) => {
       })
       .catch((err) => {
         console.error(err);
-      })
+      });
   } else {
     console.log('Already logged in!');
     res.redirect('/users'); //Need to add error
   }
-}
+};
 
 usersRoutes.post('/login', (req, res) => {
   login(req, res);

@@ -1,5 +1,4 @@
 require('dotenv').config();
-require('./settings')
 
 module.exports = {
 
