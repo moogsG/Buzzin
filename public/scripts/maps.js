@@ -287,7 +287,7 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 
 
 
-function Screenshot() {
+function Screenshot(center) {
 
     var NewMapCenter = map.getCenter();
     var latitude = NewMapCenter.lat();
