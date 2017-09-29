@@ -1,4 +1,5 @@
 $(function() {
+<<<<<<< HEAD
     $('#showMaps').on('click', function(event) {
         event.preventDefault();
 
@@ -298,3 +299,9 @@ function Screenshot(center) {
 
     //document.getElementById('hex').style.backgroundImage = "url(" + image + ")";
 }
+=======
+  $('ul')
+    .empty()
+    .load('/maps')
+})
+>>>>>>> website_design
