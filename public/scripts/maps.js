@@ -221,12 +221,10 @@ function Screenshot(center) {
     var NewMapCenter = map.getCenter();
     var latitude = NewMapCenter.lat();
     var longitude = NewMapCenter.lng();
+    var zoom = map.zoom
 
-    console.log(latitude)
+    var image = 'https://maps.googleapis.com/maps/api/staticmap?center=' + latitude + "," + longitude + '&zoom=' + zoom + '&size=500x250'
 
-  var image = 'https://maps.googleapis.com/maps/api/staticmap?center=' + latitude + "," + longitude + '&zoom=11&size=600x300&maptype=roadmap'
 
-    console.log("this works")
-    console.log($('.hexgon'))
     document.getElementById('hex').style.backgroundImage = "url(" + image + ")";
 }
