@@ -68,11 +68,23 @@ body {
           transform: rotate3d(0,0,0,0deg);
 }
 
+.hex img::after {
+  background-color: black;
+  left: -100%;
+  right: -100%;
+  width: auto;
+  height: 100%;
+  margin: 0 auto;
+  -webkit-transform: rotate3d(0,0,0,0deg);
+      -ms-transform: rotate3d(0,0,0,0deg);
+          transform: rotate3d(0,0,0,0deg);
+}
+
 .hex h1, .hex p {
   width: 100%;
   padding: 5%;
   box-sizing:border-box;
-  background-color: rgba(0, 128, 128, 0.8);
+  background-color: black;
   font-weight: 300;
   -webkit-transition:  -webkit-transform .2s ease-out, opacity .3s ease-out;
           transition:          transform .2s ease-out, opacity .3s ease-out;
@@ -105,6 +117,17 @@ body {
 
 
 /*** HOVER EFFECT  **********************************************************************/
+.hexLink:hover h1, .hexLink:focus h1,
+.hexLink:hover p, .hexLink:focus p,
+.hex:hover img, .hex:focus img{
+  background-color: black;
+  -webkit-transform:rotate3d(0,1,0,180deg);
+      -ms-transform:rotate3d(0,1,0,180deg);
+          transform:rotate3d(0,1,0,180deg);
+  -webkit-transition: all 1200ms;
+     -ms-transition: all 1200ms;
+          transition: all 1200ms;
+}
 .hexLink:hover h1, .hexLink:focus h1,
 .hexLink:hover p, .hexLink:focus p{
   -webkit-transform:translate3d(0,0,0);
