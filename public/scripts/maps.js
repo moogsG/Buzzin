@@ -1398,6 +1398,7 @@ process.chdir = function (dir) {
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 $(function() {
 <<<<<<< HEAD
+<<<<<<< HEAD
 
   $('#showMaps').on('click', function(event) {
     event.preventDefault();
@@ -1422,8 +1423,18 @@ var markers = [];
 
 
 //Creates map
+=======
+    var iconBase = '/images/marker.png';
 
+>>>>>>> 2a914cec898e4be0a7e910a1031a2dccc2d08d9d
 
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(success, error);
+    } else {
+        alert('geolocation not supported');
+    }
+
+<<<<<<< HEAD
 function initMap() {
 <<<<<<< HEAD
   geocoder = new google.maps.Geocoder();
@@ -1506,34 +1517,28 @@ function editMap(mapID) {
     messagewindow = new google.maps.InfoWindow({
         content: document.getElementById('message')
     });
+=======
+    function success(position) {
+        initMap(position.coords.latitude, position.coords.longitude);
+    }
+>>>>>>> 2a914cec898e4be0a7e910a1031a2dccc2d08d9d
 
-    google.maps.event.addListener(map, 'click', function(event) {
+    function error(msg) {
+        alert('error: ' + msg);
+    }
 
-        marker = new google.maps.Marker({
-            position: event.latLng,
-            map: map
+    function initMap(latitude, longitude) {
+        var CurrentPosition = { lat: latitude, lng: longitude };
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 11,
+            center: CurrentPosition
         });
-        markers.push(marker);
-        /*  google.maps.event.addListener(marker, 'click', function() {
-            infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
-              'Place ID: ' + place.description + '<br>' +
-              place.formatted_address + '</div>');
-            infowindow.open(map, this);
-          });*/
-
-        google.maps.event.addListener(marker, 'click', function() {
-            geocoder.geocode({
-                'latLng': event.latLng
-            }, function(results, status) {
-                if (status == google.maps.GeocoderStatus.OK) {
-                    if (results[0]) {
-                        var address = results[0].formatted_address;
-                        $('#address').val(address);
-                    }
-                }
-            });
-            infowindow.open(map, this);
+        var marker = new google.maps.Marker({
+            position: CurrentPosition,
+            map: map,
+            draggable: true
         });
+<<<<<<< HEAD
     })
     $('#editMap').on('click', function(event) {
         event.preventDefault();
@@ -1562,37 +1567,18 @@ function editMap(mapID) {
     });
 
     google.maps.event.addListener(map, 'click', function(event) {
+=======
+>>>>>>> 2a914cec898e4be0a7e910a1031a2dccc2d08d9d
 
-        marker = new google.maps.Marker({
-            position: event.latLng,
-            map: map
+        google.maps.event.addListener(marker, 'dragend', function(marker) {
+            var latLng = marker.latLng;
+            currentLatitude = latLng.lat();
+            currentLongitude = latLng.lng();
+            jQ("#latitude").val(currentLatitude);
+            jQ("#longitude").val(currentLongitude);
         });
-        markers.push(marker);
-        /*  google.maps.event.addListener(marker, 'click', function() {
-            infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
-              'Place ID: ' + place.description + '<br>' +
-              place.formatted_address + '</div>');
-            infowindow.open(map, this);
-          });*/
 
-        google.maps.event.addListener(marker, 'click', function() {
-            geocoder.geocode({
-                'latLng': event.latLng
-            }, function(results, status) {
-                if (status == google.maps.GeocoderStatus.OK) {
-                    if (results[0]) {
-                        var address = results[0].formatted_address;
-                        $('#address').val(address);
-                    }
-                }
-            });
-            infowindow.open(map, this);
-        });
-    })
-
-    curentLocation();
-}
-
+<<<<<<< HEAD
 function showMarkers() {
     setMapOnAll(map);
 }
@@ -1684,12 +1670,21 @@ function placeMarkers(point) {
         if (status == 'OK') {
             map.setCenter(results[0].geometry.location);
             marker = new google.maps.Marker({
-                map: map,
-                position: results[0].geometry.location,
-                title: "Hello World!",
-                draggable: true,
+=======
+        google.maps.event.addListener(map, 'click', function(event) {
+            placeMarker(event.latLng);
+            $('#map').append('<div>').addClass("floating")
+        });
 
+        function placeMarker(location) {
+            var marker = new google.maps.Marker({
+                position: location,
+>>>>>>> 2a914cec898e4be0a7e910a1031a2dccc2d08d9d
+                map: map,
+                icon: iconBase,
+                draggable: true
             });
+<<<<<<< HEAD
 
 
         } else {}
@@ -1726,6 +1721,9 @@ function search() {
 
   var markers = [];
 
+=======
+        }
+>>>>>>> 2a914cec898e4be0a7e910a1031a2dccc2d08d9d
 
 
 <<<<<<< HEAD
@@ -1747,12 +1745,17 @@ function search() {
   map.fitBounds(bounds);
 }
 
+<<<<<<< HEAD
 function createMarker(place, address) {
   var placeLoc = place.geometry.location;
   var marker = new google.maps.Marker({
     map: map,
     position: place.geometry.location
   });
+=======
+    }
+})
+>>>>>>> 2a914cec898e4be0a7e910a1031a2dccc2d08d9d
 
   google.maps.event.addListener(marker, 'click', function() {
     infowindow.setContent('<div><strong><span id="placeName">' + place.name + '</span></strong><br>' +
