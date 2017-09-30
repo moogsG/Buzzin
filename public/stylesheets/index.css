@@ -89,6 +89,9 @@ body {
 
 
 
+
+
+
 /*** HEX CONTENT **********************************************************************/
 
 .hex img {
@@ -177,6 +180,9 @@ body {
 
 
 
+
+
+
 /*** HOVER EFFECT  **********************************************************************/
 
 .hexLink:hover h1,
@@ -202,6 +208,9 @@ body {
     -ms-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
 }
+
+
+
 
 
 
@@ -303,13 +312,22 @@ body {
 
 
 
+
+
+
 /* Add a black background color to the top navigation */
 
 .topnav {
+    position: fixed;
     background-color: #242526;
     overflow: hidden;
     font-family: 'Raleway', sans-serif;
+    z-index: 999;
+    width: 100%;
 }
+
+
+
 
 
 
@@ -333,12 +351,18 @@ body {
 
 
 
+
+
+
 /* Change the color of links on hover */
 
 .topnav a:hover {
     background-color: #ddd;
     color: black;
 }
+
+
+
 
 
 
