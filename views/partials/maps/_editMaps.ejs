@@ -1,19 +1,21 @@
 <div>
     <button onclick="search()" value="search">search</button>
     <input id="pac-input" class="controls" type="text" placeholder="Search Box">
-<div id="form">
-      <table>
-      <tr><td>Name:</td> <td><input type='text' id='name'/> </td> </tr>
-      <tr><td>Address:</td> <td><input type='text' id='address'/> </td> </tr>
-      <tr><td>Type:</td> <td><select id='type'> +
-                 <option value='bar' SELECTED>bar</option>
-                 <option value='restaurant'>restaurant</option>
-                 </select> </td></tr>
-                 <tr><td></td><td><input type='button' value='Save' onclick='saveData()'/></td></tr>
-      </table>
-          <button onclick="clearMarkers()" value="Clear Map">Clear Map</button>
-        <button onclick="showMarkers()" value="Show Markers">Show Markers</button>
-                <button onclick="editMarker()" value="Show Markers">Edit</button>
-    </div>
+
+<form class="form-inline my-2 my-lg-0" id="register_form" action="/maps/:id/newPoint" method="POST">
+    <label for="title"></label>
+    <input class="form-control mr-sm-2" id="title" type="text" name="title" placeholder="Awesome Title">
+    <label for="description"></label>
+    <input class="form-control mr-sm-2" id="description" type="description" name="description" placeholder="...">
+    <label for="image"></label>
+    <input class="form-control mr-sm-2" id="image" type="url" name="image" placeholder="http://">
+    <label for="address"></label>
+    <input class="form-control mr-sm-2" id="address" type="address" name="address" placeholder="address">
+    <input class="form-control mr-sm-2" id="userId" type="hidden" name="userId" value="">
+    <input class="form-control mr-sm-2" id="mapId" type="hidden" name="mapId" value="<%= map[0].id %>">
+    <input id="newPoint" type="submit" class="btn btn-info my-2 my-sm-0" value="Submit">
+</form>
 
   </div>
+
+<h1><%= map[0].id %></h1>

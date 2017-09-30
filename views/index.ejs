@@ -74,10 +74,7 @@
 </head>
 
 <body>
-    <h1><%= title %></h1>
-    <p>Welcome to
-        <%= title %>
-    </p>
+
     <!-- <div class="addmap">
 </div> -->
     <div class="container">
@@ -91,7 +88,6 @@
                 <div class="addmap" id="location">
                     <span class="title">Select Locations</span>
                     <input class="search" id="search" type="text" placeholder="Search">
-                    <% include ./partials/_mapsShow %>
                         <div class="info" id="MapInfo">
                             <form action="/registered" method="POST">
                                 <span class="label" style="margin-left: 14.8%;">Title:</span>

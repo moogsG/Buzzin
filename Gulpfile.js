@@ -5,8 +5,8 @@ const gulp = require('gulp'),
   watch = require('gulp-watch'),
   jshint = require('gulp-jshint'),
   livereload = require('gulp-livereload'),
-  sass = require('gulp-sass');
-
+  sass = require('gulp-sass'),
+  browserify = require('gulp-browserify');
 //register nodemon task
 gulp.task('nodemon', () => {
   nodemon({ script: './bin/www', env: { 'NODE_ENV': 'development' }})
@@ -41,6 +41,17 @@ gulp.task('watch', () => {
 
 });
 
+gulp.task('scripts', () => {
+    // Single entry point to browserify
+    gulp.src('scripts/*.js')
+        .pipe(browserify({
+          insertGlobals : true,
+          debug : !gulp.env.production
+        }))
+        .pipe(gulp.dest('public/scripts/'));
+
+});
+
 //lint js files
 gulp.task('lint', () => {
     gulp.src(['*.js','routes/*.js', 'public/*.js'])
@@ -50,4 +61,4 @@ gulp.task('lint', () => {
 
 
 // The default task (called when you run `gulp` from cli)
-gulp.task('default', ['lint','nodemon', 'watch', 'sass.watch']);
+gulp.task('default', ['lint','nodemon', 'watch', 'sass.watch', 'scripts']);
