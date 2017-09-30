@@ -4,21 +4,38 @@
 <head>
     <meta charset="utf-8">
     <title></title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="/stylesheets/index.css">
-    <script type="text/javascript" src="/scripts/app.js"></script>
-    <link href='https://fonts.googleapis.com/css?family=Raleway:300' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <% include ./partials/_header %>
 </head>
 
 <body>
     <div class="topnav" id="myTopnav">
-        <a href="#home">Home</a>
-        <a href="#news">News</a>
-        <a href="#contact">Contact</a>
-        <a href="#about">About</a>
+        <a href="#home">BUZZN</a>
+        <a href="#news">HOME</a>
+        <a href="#contact">ABOUT</a>
+        <a href="#contact" onclick="document.getElementById('signup').style.display='block'">SIGN UP</a>
+        <a href="#contact" onclick="document.getElementById('login').style.display='block'">LOGIN</a>
+    </div>
+    <div id="signup" class="w3-modal">
+        <div class="w3-modal-content w3-animate-zoom">
+            <div class="w3-container w3-black">
+                <span onclick="document.getElementById('signup').style.display='none'" class="w3-button w3-display-topright w3-large">x</span>
+                <h1>Contact</h1>
+            </div>
+            <div class="w3-container">
+                <% include ./partials/users/_userRegister %>
+            </div>
+        </div>
+    </div>
+    <div id="login" class="w3-modal">
+        <div class="w3-modal-content w3-animate-zoom">
+            <div class="w3-container w3-black">
+                <span onclick="document.getElementById('login').style.display='none'" class="w3-button w3-display-topright w3-large">x</span>
+                <h1>Contact</h1>
+            </div>
+            <div class="w3-container">
+                <% include ./partials/users/_login %>
+            </div>
+        </div>
     </div>
     <div>
         <ul class="hexGrid">
