@@ -5,9 +5,11 @@ const knex = require('knex')(require('../knexfile').development);
 
 /* GET home page. */
 router.get('/', function(req, res) {
-  res.render('index', {
-    title: 'Express'
-  });
+    let object = {
+        user: null
+    }
+    res.render('index', object);
+
 });
 
 // router.get('/users', function(req, res) {
