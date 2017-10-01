@@ -1,6 +1,19 @@
-require('dotenv').config();
+require('dotenv').config({
+  path: '../../.env'
+});
 
 module.exports = {
+
+  // connection: {
+  //   client: 'postgresql',
+  //   connection: {
+  //     host: 'localhost',
+  //     user: 'vagrant',
+  //     password: 'vagrant',
+  //     database: 'wikimap',
+  //     port: '5432',
+  //     ssl: 'true if heroku'
+  //   },
 
   development: {
     client: 'postgresql',
@@ -12,6 +25,7 @@ module.exports = {
       port: process.env.DB_PORT,
       ssl: process.env.DB_SSL
     },
+
     migrations: {
       directory: './db/migrations',
       tableName: 'migrations'

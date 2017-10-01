@@ -5,23 +5,16 @@ const knex = require('knex')(require('../knexfile').development);
 
 /* GET home page. */
 router.get('/', function(req, res) {
-  res.render('index', {
-    title: 'Express'
-  });
-});
+      knex('users').select('map_name', 'map_description', 'user_name')
+        .innerJoin('maps', 'users.id', 'maps.user_id').where({
+          user_id: users
+        })
+        .asCallback(function(err, maps) {
+            if (err) {
+              console.log(err);
+            } else {
+              res.render('index', maps)
 
-// router.get('/users', function(req, res) {
-//     knex('users')
-//       .select()
-//       .then((users) => {
-//         res.render('index', users)
-//       })
-//       .catch((err) => {
-//         console.error(err);
-//       })
-//   } else {
-//     console.log('Already logged in!');
-//     res.redirect('/users'); //Need to add error
-//   }
-// }
-module.exports = router;
+            })
+
+          module.exports = router;

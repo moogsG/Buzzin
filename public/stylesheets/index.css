@@ -106,7 +106,6 @@ body {
 }
 
 .hex img::after {
-    background-color: black;
     left: -100%;
     right: -100%;
     width: auto;
@@ -122,7 +121,7 @@ body {
     width: 100%;
     padding: 5%;
     box-sizing: border-box;
-    background-color: black;
+    background-color: transparent;
     font-weight: 300;
     -webkit-transition: -webkit-transform .2s ease-out, opacity .3s ease-out;
     transition: transform .2s ease-out, opacity .3s ease-out;
