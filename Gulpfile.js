@@ -61,4 +61,4 @@ gulp.task('lint', () => {
 
 
 // The default task (called when you run `gulp` from cli)
-gulp.task('default', ['lint','nodemon', 'watch', 'sass.watch', 'scripts']);
+gulp.task('default', ['scripts', 'lint','nodemon', 'watch', 'sass.watch']);

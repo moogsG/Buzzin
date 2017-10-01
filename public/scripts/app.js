@@ -12,9 +12,6 @@ function createHexElement(map_name, map_d) {
 
 
 
-router.get('', function(req, res) {
-  knex()
-})
 
 function select(id) {
   knex("maps").SELECT("map_name", "map_description").WHERE("user_id", id).then((res) => {
