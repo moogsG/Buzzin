@@ -1,19 +1,40 @@
-<div>
-    <button onclick="search()" value="search">search</button>
-    <input id="pac-input" class="controls" type="text" placeholder="Search Box">
-<div id="form">
-      <table>
-      <tr><td>Name:</td> <td><input type='text' id='name'/> </td> </tr>
-      <tr><td>Address:</td> <td><input type='text' id='address'/> </td> </tr>
-      <tr><td>Type:</td> <td><select id='type'> +
-                 <option value='bar' SELECTED>bar</option>
-                 <option value='restaurant'>restaurant</option>
-                 </select> </td></tr>
-                 <tr><td></td><td><input type='button' value='Save' onclick='saveData()'/></td></tr>
-      </table>
-          <button onclick="clearMarkers()" value="Clear Map">Clear Map</button>
-        <button onclick="showMarkers()" value="Show Markers">Show Markers</button>
-                <button onclick="editMarker()" value="Show Markers">Edit</button>
-    </div>
 
+
+<script src="/scripts/mapsEdit.js"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBK7BCsfqIsm19orAsbdqLqYCODKv-nYA4&libraries=places"></script>
+
+<div class="modal modalMap">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"> <%= map[0].map_name %> </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div id="map"></div>
+      </div>
+      <div class="modal-body">
+        <form class="form my-2 my-lg-0" id="register_form" action="/maps/newPoint/<%= map[0].id %>" method="POST">
+            <label for="title"></label>
+            <input class="form-control mr-sm-2" id="title" type="text" name="title" placeholder="Awesome Title">
+            <label for="description"></label>
+            <input class="form-control mr-sm-2" id="description" type="description" name="description" placeholder="Describe me!">
+            <label for="image"></label>
+            <input class="form-control mr-sm-2" id="image" type="url" name="image" placeholder="http://">
+            <label for="address"></label>
+            <input class="form-control mr-sm-2" id="address" type="address" name="address" placeholder="address">
+            <input class="form-control mr-sm-2" id="userId" mapId="<%= map[0].id %>" type="hidden" value="">
+            <input id="newPoint" type="submit" class="btn btn-info my-2 my-sm-0" value="Submit">
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
   </div>
+</div>
+<div>
+
+

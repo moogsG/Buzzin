@@ -116,6 +116,30 @@ usersRoutes.post('/register', (req, res) => {
         });
 });
 
+usersRoutes.post('/favorite', (req, res) => {
+  let values = {
+    user_id: req.body.user_id,
+    map_id: req.body.map_id
+  };
+  knex('fav_maps')
+    .whereNotExists(function() {
+      knex('fav_maps').where({
+        'user_id': values.user_id,
+        'map_id': values.map_id
+      });
+    })
+    .catch((err) => {
+      res.render('./partials/maps/_showMaps');
+      console.error(err);
+    })
+    .then(() => {
+      knex.insert(values).into('fav_maps');
+    })
+    .then(() => {
+      console.log('Added Favorite');
+      res.render('./partials/maps/_showMaps');
+    });
+});
 /*Clears cookies username
  **************************
  *Clears username cookie
