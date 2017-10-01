@@ -19,10 +19,3 @@ function select(id) {
         }
     });
 }
-
-function select(userName) {
-    knex("users").SELECT("user_name").WHERE("user_id", id).then((res) => {
-            return userName;
-        }
-    });
-}

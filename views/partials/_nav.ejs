@@ -1,11 +1,11 @@
 <% if (user) { %>
     <div class="topnav" id="myTopnav">
-        <a href="/">BUZZN</a>
-        <a href="/">HOME</a>
-        <a href="/">ABOUT</a>
+        <a>BUZZN</a>
+        <a>HOME</a>
+        <a>ABOUT</a>
         <a href="/users/logout" style="float:right;">LOGOUT</a>
         <a style="float:right;">CREATE MAP</a>
-        <a href="#" style="float:right;">VIEW MAPS</a>
+        <a href="/users/show" style="float:right;">PROFILE</a>
         <a class="name" style="float:right;">Welcome <%= user %>!</a>
     </div>
     <div id="signup" class="w3-modal">
@@ -32,9 +32,9 @@
     </div>
     <% } else { %>
         <div class="topnav" id="myTopnav">
-            <a href="/">BUZZN</a>
-            <a href="/">HOME</a>
-            <a href="/">ABOUT</a>
+            <a>BUZZN</a>
+            <a>HOME</a>
+            <a>ABOUT</a>
             <a href="#signup" onclick="document.getElementById('signup').style.display='block'" style="float:right;">SIGN UP</a>
             <a href="#login" onclick="document.getElementById('login').style.display='block'" style="float:right;">LOGIN</a>
         </div>

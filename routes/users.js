@@ -74,7 +74,12 @@ const login = (req, res) => {
     }
 };
 
-
+usersRoutes.get('/show', (req, res) => {
+    let object = {
+        user: req.session.username
+    }
+    res.render('./partials/users/_userShow', object);
+});
 
 
 
