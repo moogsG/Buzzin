@@ -8,78 +8,20 @@
 </head>
 
 <body>
-
-
-    <!-- <div class="addmap">
-</div> -->
-    <div class="container">
-        <h2>Create A Map</h2>
-        <!-- Trigger the modal with a button -->
-        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">ADD MAP</button>
-        <!-- Modal -->
-        <div class="modal fade" id="myModal" role="dialog">
-            <div class="modal-dialog">
-                <!-- Modal content-->
-                <div class="addmap" id="location">
-                    <span class="title">Select Locations</span>
-                    <input class="search" id="search" type="text" placeholder="Search">
-                        <div class="info" id="MapInfo">
-                            <form action="/registered" method="POST">
-                                <span class="label" style="margin-left: 14.8%;">Title:</span>
-                                <input class="InputTitle" id="InputTitle" type="text" placeholder="Title">
-                                <br>
-                                <span class="label">Description:</span>
-                                <input class="description" id="description" type="text" placeholder="Please Enter A Discription...">
-                        </div>
-                        <button type="button" class="save">Save Map</button>
-                        </form>
-                </div>
-
-    <div class="topnav" id="myTopnav">
-        <a href="/">BUZZN</a>
-        <a href="/">HOME</a>
-        <a href="/">ABOUT</a>
-        <a href="#signup" onclick="document.getElementById('signup').style.display='block'" style="float:right;">SIGN UP</a>
-        <a href="#login" onclick="document.getElementById('login').style.display='block'" style="float:right;">LOGIN</a>
-    </div>
-    <div id="signup" class="w3-modal">
-        <div class="w3-modal-content w3-animate-zoom">
-            <div class="w3-container w3-black">
-                <span onclick="document.getElementById('signup').style.display='none';" class="w3-button w3-display-topright w3-large">x</span>
-                <h1>Contact</h1>
-            </div>
-            <div class="w3-container">
-                <% include ./partials/users/_userRegister %>
-
-            </div>
-        </div>
-    </div>
-    <div id="login" class="w3-modal">
-        <div class="w3-modal-content w3-animate-zoom">
-            <div class="w3-container w3-black">
-                <span onclick="document.getElementById('login').style.display='none'" class="w3-button w3-display-topright w3-large">x</span>
-                <h1>Contact</h1>
-            </div>
-            <div class="w3-container">
-                <% include ./partials/users/_login %>
-            </div>
-        </div>
-    </div>
-    <div>
-        <ul class="hexGrid">
-        <%for (map in maps) { %>
-            <li class="hex">
-                <div class="hexIn">
-                    <a class="hexLink" href="maps/show/<%= map.id%>">
-            <img src="<%= map.img %>" alt="<%= map.map_name %>" />
-            <h1><%= map.map_name %></h1>
-            <p><%= map.map_description %></p>
+    <% include ./partials/_nav %>
+        <div>
+            <ul class="hexGrid">
+                <li class="hex">
+                    <div class="hexIn">
+                        <a class="hexLink" href="#">
+            <img src="https://farm9.staticflickr.com/8461/8048823381_0fbc2d8efb.jpg" alt="" />
+            <h1>This is a title</h1>
+            <p>Some sample text about the article this hexagon leads to</p>
           </a>
-                </div>
-            </li>
-        <%};%>
-        </ul>
-    </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
 </body>
 
 </html>

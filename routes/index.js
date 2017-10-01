@@ -5,6 +5,9 @@ const router = express.Router();
 /* GET home page. */
 router.get('/', function(req, res) {
 
-  res.render('index');
+    let object = {
+        user: null
+    }
+    res.render('index', object);
+
 });
-module.exports = router;

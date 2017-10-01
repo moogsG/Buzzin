@@ -92,6 +92,18 @@ body {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 /*** HEX CONTENT **********************************************************************/
 
 .hex img {
@@ -183,6 +195,18 @@ body {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 /*** HOVER EFFECT  **********************************************************************/
 
 .hexLink:hover h1,
@@ -198,6 +222,7 @@ body {
     -webkit-transition: all 1200ms;
     -ms-transition: all 1200ms;
     transition: all 1200ms;
+    backface-visibility: hidden;
 }
 
 .hexLink:hover h1,
@@ -208,6 +233,18 @@ body {
     -ms-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -315,6 +352,18 @@ body {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 /* Add a black background color to the top navigation */
 
 .topnav {
@@ -325,6 +374,18 @@ body {
     z-index: 999;
     width: 100%;
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -346,6 +407,30 @@ body {
     font-size: 17px;
 }
 
+.topnav a .name {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 20px 22px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -360,6 +445,23 @@ body {
     background-color: #ddd;
     color: black;
 }
+
+.topnav .name:hover {
+    background-color: #242526;
+    color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
