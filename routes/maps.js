@@ -1,12 +1,16 @@
 'use strict';
 const express = require('express');
 const mapRouter = express.Router();
-const cookieSession = require('cookie-session');
 const bodyParser = require('body-parser');
 const knex = require('knex')(require('../knexfile').development);
-
+const cookieSession = require('cookie-session');
 mapRouter.use(bodyParser.urlencoded({
   extended: true
+}));
+
+mapRouter.use(cookieSession({
+  name: 'session',
+  keys: ['key1', 'key2']
 }));
 
 /* GET Maps. */
@@ -15,6 +19,28 @@ mapRouter.get('/', function(req, res) {
   res.render('maps', {
     title: 'Express'
   });
+});
+
+mapRouter.get('/edit/:id', (req, res) => {
+  if (!req.params.id) {
+    console.log('no id')
+  } else {
+    knex('maps').select()
+      .where({
+        'id': req.params.id
+      })
+      .catch((err) => {
+        console.error(err);
+      })
+      .then((data) => {
+        let templateVars = {
+
+          map: data
+        };
+        console.log(data);
+        res.render('./partials/maps/_editMaps', templateVars);
+      });
+  }
 });
 
 mapRouter.get('/:id/point', (req, res) => {
@@ -35,39 +61,23 @@ mapRouter.get('/new', (req, res) => {
   res.render('./partials/maps/_createMaps');
 });
 
-mapRouter.get('/edit/:id', (req, res) => {
-  if (!req.params.id) {} else {
-    knex('maps').select()
-      .where({
-        'id': req.params.id
-      })
-      .then((data) => {
-        let templateVars = {
-          map: data
-        };
-        res.render('./partials/maps/_editMaps', templateVars);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }
-});
-
 mapRouter.get('/show/:id', (req, res) => {
   knex('maps').select()
     .where({
-      'id': '1'
+      'id': req.params.id
+    })
+    .catch((err) => {
+      console.error(err);
     })
     .then((data) => {
       let templateVars = {
         user: req.session.username,
         map: data
       };
+      console.log(templateVars);
       res.render('./partials/maps/_showMaps', templateVars);
-    })
-    .catch((err) => {
-      console.error(err);
     });
+
 });
 
 mapRouter.post('/newMap', (req, res) => {
@@ -89,10 +99,11 @@ mapRouter.post('/newMap', (req, res) => {
     });
 });
 
-mapRouter.post('/:id/newPoint', (req, res) => {
+mapRouter.post('/newPoint/:id', (req, res) => {
+  console.log(req.body.userId)
   let values = {
-    user_id: req.session.username.id,
-    map_id: req.body.mapId,
+    user_id: req.body.userId,
+    map_id: req.params.id,
     title: req.body.title,
     description: req.body.description,
     image: req.body.image,
@@ -100,9 +111,9 @@ mapRouter.post('/:id/newPoint', (req, res) => {
   };
 
   knex('points').insert(values)
-    .then(() => {
+    .then((point) => {
       console.log('Created new point');
-      res.redirect('maps');
+      res.send(point);
     })
     .catch((err) => {
       console.error(err);

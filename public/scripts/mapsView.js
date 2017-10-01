@@ -87,15 +87,14 @@ Loads the map
 */
 
 $(function() {
-
-    var mapID = $('#favoriteMap').attr('mapId');
-
+  var mapID = $('#favoriteMap').attr('mapId');
       initMap(mapID);
-      $('.modalMap').modal('show');
+      $('.modalMap').modal();
 });
 
 /*Creates main map*/
 function initMap(mapID) {
+
   geocoder = new google.maps.Geocoder();
   map = new google.maps.Map($('#map')[0], {
     center: {
@@ -120,7 +119,7 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.open(map);
 }
 
-/*$(function() {
+$(function() {
 
       $('#favoriteMap').on('click', function(event) {
         event.preventDefault();
@@ -130,7 +129,8 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
           user_id: user,
           map_id: mapID
         }
-        $.post('/users/update', values)
+        console.log(values)
+        $.post('/users/favorite', values)
           .done(function() {
             alert("second success");
           })
@@ -138,4 +138,4 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
             alert("error");
           });
       });
-});*/
+});

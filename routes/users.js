@@ -104,25 +104,23 @@ usersRoutes.post('/favorite', (req, res) => {
     user_id: req.body.user_id,
     map_id: req.body.map_id
   };
-  knex('users')
-    .whereNotExists(
-      knex.select('*')
-      .from('fav_maps')
-      .whereRaw({
-        'user_id': values.user_id
-      })
-      .whereRaw({
+  knex('fav_maps')
+    .whereNotExists(function() {
+      knex('fav_maps').where({
+        'user_id': values.user_id,
         'map_id': values.map_id
-      }))
-    .insert(values)
-    .then(() => {
-      console.log('Added Favorite');
+      });
     })
     .catch((err) => {
+      res.render('./partials/maps/_showMaps');
       console.error(err);
     })
     .then(() => {
-      res.send('Success');
+      knex.insert(values).into('fav_maps');
+    })
+    .then(() => {
+      console.log('Added Favorite');
+      res.render('./partials/maps/_showMaps');
     });
 });
 /*Clears cookies username

@@ -12,10 +12,4 @@ $(function() {
     $.post('/maps/newMap', $('form').serialize());
   });
 
-  $('#newPoint').on('click', function(event) {
-    event.preventDefault();
-    console.log('bitch')
-    $.post('/maps/:id/newPoint', $("form").serialize());
-  });
-
 })
