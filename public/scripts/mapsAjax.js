@@ -12,9 +12,4 @@ $(function() {
     $.post('/maps/newMap', $('form').serialize());
   });
 
-  $('#register').on('click', function(event) {
-    event.preventDefault();
-    $.post('/maps/edit', $("form").serialize());
-  });
-
 })
