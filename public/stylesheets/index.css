@@ -67,43 +67,6 @@ body {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*** HEX CONTENT **********************************************************************/
 
 .hex img {
@@ -168,44 +131,6 @@ body {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*** HOVER EFFECT  **********************************************************************/
 
 .hexLink:hover h1,
@@ -232,43 +157,6 @@ body {
     -ms-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 /*** HEXAGON SIZING AND EVEN ROW INDENTATION *****************************************************************/
@@ -344,25 +232,6 @@ body {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* Add a black background color to the top navigation */
 
 .topnav {
@@ -373,25 +242,6 @@ body {
     z-index: 999;
     width: 100%;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 /* Style the links inside the navigation bar */
@@ -417,27 +267,6 @@ body {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* Change the color of links on hover */
 
 .topnav a:hover {
@@ -449,25 +278,6 @@ body {
     background-color: #242526;
     color: white;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 /* Add a color to the active/current link */
