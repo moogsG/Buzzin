@@ -70,14 +70,13 @@ mapRouter.get('/show/:id', (req, res) => {
       console.error(err);
     })
     .then((data) => {
+        console.log(data && data[0]);
       let templateVars = {
         user: req.session.username,
         map: data
       };
-      console.log(templateVars);
       res.render('./partials/maps/_showMaps', templateVars);
     });
-
 });
 
 mapRouter.post('/newMap', (req, res) => {
