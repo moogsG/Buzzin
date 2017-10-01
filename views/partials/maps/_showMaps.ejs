@@ -15,19 +15,18 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title"> <%= map %> </h5>
+        <h5 class="modal-title"> <%= map[0].map_name %> </h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
+          <span aria-hidden="true"></span>
         </button>
       </div>
       <div class="modal-body">
         <div id="map"></div>
       </div>
       <div class="modal-footer">
-
         <button id="favoriteMap" mapId="<%= map[0].id %>" user="<%= user %>" type="button" class="btn btn-primary">Favorite</button>
-
       </div>
     </div>
   </div>
 </div>
+

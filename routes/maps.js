@@ -33,11 +33,11 @@ mapRouter.get('/edit/:id', (req, res) => {
         console.error(err);
       })
       .then((data) => {
+        console.log('foo')
         let templateVars = {
 
           map: data
         };
-        console.log(data);
         res.render('./partials/maps/_editMaps', templateVars);
       });
   }
@@ -50,7 +50,7 @@ mapRouter.get('/:id/point', (req, res) => {
     })
     .then((data) => {
       let points = data;
-      res.send(points);
+      res.send(data)
     })
     .catch((err) => {
       console.error(err);
@@ -69,11 +69,10 @@ mapRouter.get('/show/:id', (req, res) => {
     .catch((err) => {
       console.error(err);
     })
-    .then((data) => {
-        console.log(data && data[0]);
+    .then((map) => {
       let templateVars = {
         user: req.session.username,
-        map: data
+        map: map
       };
       res.render('./partials/maps/_showMaps', templateVars);
     });
