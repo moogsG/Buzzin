@@ -10,7 +10,7 @@ const users = require('./routes/users');
 const maps = require('./routes/maps');
 
 const app = express();
-
+// const knex = require('knex')(require('knexfile').development);
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({
   extended: true
@@ -20,8 +20,8 @@ app.use(bodyParser.urlencoded({
  ****************
  */
 app.use(cookieSession({
-    name: 'session',
-    keys: ['key1', 'key2']
+  name: 'session',
+  keys: ['key1', 'key2']
 }));
 
 /*View Engine
@@ -33,8 +33,8 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.json());
 
 /*Routes
-*******
-*/
+ *******
+ */
 app.use('/', routes);
 app.use('/users', users);
 app.use('/maps', maps);
@@ -43,9 +43,9 @@ app.use('/maps', maps);
 /// catch 404 and forwarding to error handler
 
 app.use((req, res, next) => {
-    let err = new Error('Not Found');
-    err.status = 404;
-    next(err);
+  let err = new Error('Not Found');
+  err.status = 404;
+  next(err);
 });
 
 

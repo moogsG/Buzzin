@@ -1,19 +1,8 @@
 require('dotenv').config({
-  path: '../../.env'
+  path: '.env'
 });
 
 module.exports = {
-
-  // connection: {
-  //   client: 'postgresql',
-  //   connection: {
-  //     host: 'localhost',
-  //     user: 'vagrant',
-  //     password: 'vagrant',
-  //     database: 'wikimap',
-  //     port: '5432',
-  //     ssl: 'true if heroku'
-  //   },
 
   development: {
     client: 'postgresql',
@@ -47,4 +36,4 @@ module.exports = {
     }
   }
 
-};
+}

@@ -1,18 +1,18 @@
-const knex = require('knex')(require('../../knexfile').development);
+// const knex = require('knex')(require('../../knexfile').connection);
 
 
 
-// function createHexElement(map_name, map_description, user_name, ) {
-//   var $list = $("<li>").addClass("hex")
-//     .append($("<div>", {
-//       "class": "hexIn"
-//     }).append($("<a>", {
-//       "class": "hexLink"
-//     }).attr("href", "#").append($("<img>").attr("src", map)).append($("<h1>")
-//       .text(map_name).append($("<p>").text(map_description, user_name)))))
+function createHexElement(map_name, map_description, user_name) {
+  var $list = $("<li>").addClass("hex")
+    .append($("<div>", {
+      "class": "hexIn"
+    }).append($("<a>", {
+      "class": "hexLink"
+    }).attr("href", "#").append($("<img>").attr("src", map)).append($("<h1>")
+      .text(map_name).append($("<p>").text(map_description, user_name)))))
 
-//   return $list;
-// }
+  return $list;
+}
 
 
 function get_map(users) {

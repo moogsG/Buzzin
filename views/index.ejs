@@ -8,47 +8,9 @@
 </head>
 
 <body>
-    <% include ./partials/_nav %>
-        <div>
-            <ul class="hexGrid">
-                <li class="hex">
-                    <div class="hexIn">
-                        <a class="hexLink" href="#">
-            <img src="https://farm9.staticflickr.com/8461/8048823381_0fbc2d8efb.jpg" alt="" />
-            <h1>This is a title</h1>
-            <p>Some sample text about the article this hexagon leads to</p>
-    <div class="topnav" id="myTopnav">
-        <a href="/">BUZZN</a>
-        <a href="/">HOME</a>
-        <a href="/">ABOUT</a>
-        <a href="#signup" onclick="document.getElementById('signup').style.display='block'" style="float:right;">SIGN UP</a>
-        <a href="#login" onclick="document.getElementById('login').style.display='block'" style="float:right;">LOGIN</a>
-    </div>
-    <div id="signup" class="w3-modal">
-        <div class="w3-modal-content w3-animate-zoom">
-            <div class="w3-container w3-black">
-                <span onclick="document.getElementById('signup').style.display='none';" class="w3-button w3-display-topright w3-large">x</span>
-                <h1>Contact</h1>
-            </div>
-            <div class="w3-container">
-                <% include ./partials/users/_userRegister %>
-            </div>
-        </div>
-    </div>
-    <div id="login" class="w3-modal">
-        <div class="w3-modal-content w3-animate-zoom">
-            <div class="w3-container w3-black">
-                <span onclick="document.getElementById('login').style.display='none'" class="w3-button w3-display-topright w3-large">x</span>
-                <h1>Contact</h1>
-            </div>
-            <div class="w3-container">
-                <% include ./partials/users/_login %>
-            </div>
-        </div>
-    </div>
     <div>
         <ul class="hexGrid">
-            <%for (map in maps) {%>
+            <%for (map of maps) {%>
                 <li class="hex">
                     <div class="hexIn">
                         <a class="hexLink" href="maps/show/<%map.id%>">
@@ -66,16 +28,3 @@
 
 </html>
 
-<ul class="hexGrid">
-        <%for (map in maps) { %>
-            <li class="hex">
-                <div class="hexIn">
-                    <a class="hexLink" href="maps/show/<%= map.id%>">
-            <img src="<%= map.img %>" alt="<%= map.map_name %>" />
-            <h1><%= map.map_name %></h1>
-            <p><%= map.map_description %></p>
-          </a>
-                </div>
-            </li>
-        <%};%>
-        </ul>
