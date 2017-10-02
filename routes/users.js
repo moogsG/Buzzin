@@ -12,27 +12,27 @@ const cookieSession = require('cookie-session');
 const knex = require('knex')(require('../knexfile').development);
 
 usersRoutes.use(bodyParser.urlencoded({
-    extended: true
+  extended: true
 }));
 
 usersRoutes.use(cookieSession({
-    name: 'session',
-    keys: ['key1', 'key2']
+  name: 'session',
+  keys: ['key1', 'key2']
 }));
 
 /* GET users listing. */
 usersRoutes.get('/', (req, res) => {
-    res.render('users');
+  res.render('users');
 });
 
 /* GET partials
  ***************
  */
 usersRoutes.get('/register', (req, res) => {
-    res.render('./partials/users/_userRegister');
+  res.render('./partials/users/_userRegister');
 });
 usersRoutes.get('/login', (req, res) => {
-    res.render('./partials/users/_login');
+  res.render('./partials/users/_login');
 });
 
 /*Login
@@ -41,51 +41,48 @@ usersRoutes.get('/login', (req, res) => {
  *Fix later
  */
 const login = (req, res) => {
-    if (!req.session.username) {
-        let email = req.body.email;
-        knex('users')
-            .select()
-            .where({
-                'email': email
-            })
-            .then((login) => {
-                if (bcrypt.compareSync(req.body.password, login[0].password)) {
-                    req.session.username = login[0].user_name;
-                    console.log(req.session.username);
-                    let object = {
-                        user: req.session.username
-                    }
+  if (!req.session.username) {
+    let email = req.body.email;
+    knex('users')
+      .select()
+      .where({
+        'email': email
+      })
+      .then((login) => {
+        if (bcrypt.compareSync(req.body.password, login[0].password)) {
+          req.session.username = login[0].user_name;
+          console.log(req.session.username);
+          let object = {
+            user: req.session.username
+          }
 
-                    res.render('index', object)
-                } else {
-                    console.log('Passwords do not match!');
-                    res.render('./partials/users/_userShow'); //Need to add error
-                }
-            })
-            .catch((err) => {
-                console.error(err);
-            });
-    } else {
-        let object = {
-            req: req.session.username
+          res.render('index', object)
+        } else {
+          console.log('Passwords do not match!');
+          res.render('./partials/users/_userShow'); //Need to add error
         }
-        console.log('Already logged in!');
-        res.render('index'); //Need to add error
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  } else {
+    let object = {
+      req: req.session.username
     }
+    console.log('Already logged in!');
+    res.render('index'); //Need to add error
+  }
 };
 
 usersRoutes.get('/show', (req, res) => {
-    let object = {
-        user: req.session.username
-    }
-    res.render('./partials/users/_userShow', object);
+  let object = {
+    user: req.session.username
+  }
+  res.render('./partials/users/_userShow', object);
 });
 
-
-
-
 usersRoutes.post('/login', (req, res) => {
-    login(req, res);
+  login(req, res);
 });
 
 /*Register
@@ -94,26 +91,26 @@ usersRoutes.post('/login', (req, res) => {
 
 usersRoutes.post('/register', (req, res) => {
 
-    /*NEEDS CHECKS FOR SHIT*/
+  /*NEEDS CHECKS FOR SHIT*/
 
-    let hash = bcrypt.hashSync(req.body.password, 10);
+  let hash = bcrypt.hashSync(req.body.password, 10);
 
-    let values = {
-        user_name: req.body.username,
-        password: hash,
-        email: req.body.email
-    };
+  let values = {
+    user_name: req.body.username,
+    password: hash,
+    email: req.body.email
+  };
 
-    knex('users').insert(values)
-        .then(() => {
-            console.log('Registered New User');
-        })
-        .catch((err) => {
-            console.error(err);
-        })
-        .then(() => {
-            login(req, res);
-        });
+  knex('users').insert(values)
+    .then(() => {
+      console.log('Registered New User');
+    })
+    .catch((err) => {
+      console.error(err);
+    })
+    .then(() => {
+      login(req, res);
+    });
 });
 
 usersRoutes.post('/favorite', (req, res) => {
@@ -133,7 +130,7 @@ usersRoutes.post('/favorite', (req, res) => {
       console.error(err);
     })
     .then((data) => {
-        console.log(data);
+      console.log(data);
       //knex.insert(values).into('fav_maps');
     })
     .then(() => {
@@ -147,8 +144,8 @@ usersRoutes.post('/favorite', (req, res) => {
  *Returns to /urls
  */
 usersRoutes.get('/logout', (req, res) => {
-    req.session = null;
-    res.redirect('/');
+  req.session = null;
+  res.redirect('/');
 });
 
 module.exports = usersRoutes;
