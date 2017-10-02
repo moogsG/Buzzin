@@ -41,6 +41,9 @@ usersRoutes.get('/login', (req, res) => {
  *Fix later
  */
 const login = (req, res) => {
+  let templateVars = {
+    user: req.session.username
+  }
   if (!req.session.username) {
     let email = req.body.email;
     knex('users')
@@ -52,11 +55,8 @@ const login = (req, res) => {
         if (bcrypt.compareSync(req.body.password, login[0].password)) {
           req.session.username = login[0].user_name;
           console.log(req.session.username);
-          let object = {
-            user: req.session.username
-          }
 
-          res.render('index', object)
+          res.render('index', templatVars)
         } else {
           console.log('Passwords do not match!');
           res.render('./partials/users/_userShow'); //Need to add error
@@ -66,19 +66,16 @@ const login = (req, res) => {
         console.error(err);
       });
   } else {
-    let object = {
-      req: req.session.username
-    }
     console.log('Already logged in!');
-    res.render('index'); //Need to add error
+    res.render('index', templatVars); //Need to add error
   }
 };
 
 usersRoutes.get('/show', (req, res) => {
-  let object = {
+  let templatVars = {
     user: req.session.username
   }
-  res.render('./partials/users/_userShow', object);
+  res.render('./partials/users/_userShow', templatVars);
 });
 
 usersRoutes.post('/login', (req, res) => {
