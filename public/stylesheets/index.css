@@ -1,6 +1,7 @@
 
 body {
     background: #ffffff;
+    height, width: 100%;
 }
 
 .hexGrid {
@@ -100,7 +101,7 @@ body {
 }
 
 .hex #hexh1 {
-    bottom: 46%;
+    bottom: 45%;
     padding-top: 50%;
     font-size: 1.5em;
     z-index: 1;
