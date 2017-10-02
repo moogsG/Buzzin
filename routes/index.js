@@ -19,9 +19,9 @@ router.get('/', function(req, res) {
                 user: req.session.username,
                 userId: req.session.userid,
                 maps: maps
-            }
+            };
             res.render('index', templateVars);
-        })
+        });
 
 });
 

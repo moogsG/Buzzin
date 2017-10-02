@@ -1,6 +1,7 @@
 $(function() {
     $('.hex').on('click', 'a', function(event) {
         var mapId = $(this).attr('mapId');
+        console.log(mapId)
         $('.viewMap').empty();
         $('.viewMap').load('../maps/show/' + mapId);
     })
@@ -14,13 +15,7 @@ $(function() {
         $('.viewMap').load('../users/fav');
     })
     $('#mapsEdited').on('click', function(event) {
-        var mapId = $(this).attr('mapId');
         $('.maps').empty();
-        $('.viewMap').load('../maps/show/' + mapId);
-    })
-    $('.#edit').on('click', function(event) {
-        var mapId = $(this).attr('mapId');
-        $('.maps').empty();
-        $('.viewMap').load('../maps/show/' + mapId);
+        $('.viewMap').load('../users/edited');
     })
 })

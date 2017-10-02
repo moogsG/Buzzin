@@ -4,12 +4,22 @@ html {
 *, *:before, *:after {
   box-sizing: inherit; }
 
+body {
+  font-family: 'Open Sans Condensed', sans-serif; }
+  body p, body h1, body a, body h1 {
+    font-size: 1.4em; }
+
 a {
   text-decoration: none; }
 
+/* Add a black background color to the top navigation */
+.navbar-brand {
+  font-family: 'Monoton', cursive;
+  font-size: 2rem; }
+
 #map {
   height: 400px;
-  width: 400px; }
+  width: 100%; }
 
 * {
   margin: 0;

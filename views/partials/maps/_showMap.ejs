@@ -1,11 +1,11 @@
 
 <script src="/scripts/mapsView.js"></script>
 
-<div class="modal modalMap">
+<div class="modal modalMap text-center">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title"> <%= maps[0].map_name %> </h5>
+        <h2 class="modal-title"> <%= maps[0].map_name %> </h2>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true"></span>
         </button>
@@ -13,8 +13,11 @@
       <div class="modal-body">
         <div id="map"></div>
       </div>
+      <% if(user){%>
       <div class="modal-footer">
+        <button id="editMap" type="button" mapId="<%= maps[0].id %>" class="btn btn-primary">Edit</button>
         <button id="favoriteMap" mapId="<%= maps[0].id %>" user="<%= userId %>" type="button" class="btn btn-primary">Favorite</button>
       </div>
+      <%}%>
     </div>
 </div>

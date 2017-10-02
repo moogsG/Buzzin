@@ -45,30 +45,34 @@ usersRoutes.get('/show', (req, res) => {
         });
 });
 usersRoutes.get('/fav', (req, res) => {
-    knex('fav_maps')
-        .select('map_id')
+    knex('maps').select()
+        .innerJoin('fav_maps', 'maps.id', 'fav_maps.map_id')
         .where({
-            'user_id': req.session.userid
+            'fav_maps.user_id': req.session.userid
         })
-        .then((favMap) => {
-            for (let map of favMap) {
-
-                knex('maps')
-                    .select()
-                    .where({
-                        'id': map.map_id
-                    })
-                    .then((maps) => {
-                        let templateVars = {
-                            maps: maps,
-                            user: req.session.username,
-                            userId: req.session.userid
-                        }
-                        res.render('./userShow', templateVars);
-                    })
-            }
+        .then((map) => {
+            let templateVars = {
+                maps: map,
+                user: req.session.username,
+                userId: req.session.userid
+            };
+            res.render('./partials/maps/_showMaps', templateVars)
         });
-
+});
+usersRoutes.get('/edited', (req, res) => {
+    knex('maps').select()
+        .innerJoin('points', 'maps.id', 'points.map_id')
+        .where({
+            'points.user_id': req.session.userid
+        })
+        .then((map) => {
+            let templateVars = {
+                maps: map,
+                user: req.session.username,
+                userId: req.session.userid
+            };
+            res.render('./partials/maps/_showMaps', templateVars)
+        });
 });
 /*Login
  *******

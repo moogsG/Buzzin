@@ -18,13 +18,10 @@ mapRouter.get('/', function(req, res) {
     res.render('maps', templateVars, {
         title: 'Express'
     });
-
 });
 
 mapRouter.get('/edit/:id', (req, res) => {
-    if (!req.params.id) {
-        console.log('no id')
-    } else {
+    if (!req.params.id) {} else {
         knex('maps').select()
             .where({
                 'id': req.params.id
@@ -33,7 +30,6 @@ mapRouter.get('/edit/:id', (req, res) => {
                 console.error(err);
             })
             .then((data) => {
-                console.log('foo')
                 let templateVars = {
                     user: req.session.username,
                     userId: req.session.userid,
@@ -41,7 +37,7 @@ mapRouter.get('/edit/:id', (req, res) => {
                 };
                 res.render('./partials/maps/_editMaps', templateVars);
             });
-    }
+    };
 });
 
 mapRouter.get('/:id/point', (req, res) => {
@@ -51,7 +47,7 @@ mapRouter.get('/:id/point', (req, res) => {
         })
         .then((data) => {
             let points = data;
-            res.send(data)
+            res.send(data);
         })
         .catch((err) => {
             console.error(err);

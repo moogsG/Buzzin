@@ -1,30 +1,18 @@
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" href="/vendor/font-awesome.min.css"/>
-
-<!-- App CSS -->
-<link rel="stylesheet" href="/stylesheets/sass/style.css"/>
-<!-- External JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
 <script src="/scripts/mapsEdit.js"></script>
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBK7BCsfqIsm19orAsbdqLqYCODKv-nYA4&libraries=places"></script>
 
-<div class="modal modalMap">
+<div class="modal modalMapEdit text-center">
   <div class="modal-dialog" role="document">
+
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title"> <%= map[0].map_name %> </h5>
+        <h2 class="modal-title"> <%= map[0].map_name %> </h2>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
+             <span aria-hidden="true"></span>
         </button>
       </div>
       <div class="modal-body">
-        <div id="map"></div>
-      </div>
-      <div class="modal-body">
-        <form class="form my-2 my-lg-0" id="register_form" action="/maps/newPoint/<%= map[0].id %>" method="POST">
+      <div id="map"></div>
+        <form class="form my-2 my-lg-0" action="/maps/newPoint/<%= map[0].id %>" method="POST">
             <label for="title"></label>
             <input class="form-control mr-sm-2" id="title" type="text" name="title" placeholder="Awesome Title">
             <label for="description"></label>
@@ -34,15 +22,14 @@
             <label for="address"></label>
             <input class="form-control mr-sm-2" id="address" type="address" name="address" placeholder="address">
             <input class="form-control mr-sm-2" id="user" name="user" mapId="<%= map[0].id %>" type="hidden" value="<%= userId %>">
-            <input id="newPoint" type="submit" class="btn btn-info my-2 my-sm-0" value="Submit">
-        </form>
       </div>
       <div class="modal-footer">
+            <input id="newPoint" type="submit" class="btn btn-info my-2 my-sm-0" value="Submit">
+        </form>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>
-  </div>
+    </div>
 </div>
-<div>
 
 

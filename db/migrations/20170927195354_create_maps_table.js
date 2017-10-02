@@ -1,3 +1,5 @@
+//create Tables for Users, Maps, Points, and favourite maps
+
 exports.up = function(knex, Promise) {
     return Promise.all([
         knex.schema.createTable('users', (table) => {
@@ -30,8 +32,6 @@ exports.up = function(knex, Promise) {
 
     ])
 };
-
-
 
 exports.down = function(knex, Promise) {
     return Promise.all([

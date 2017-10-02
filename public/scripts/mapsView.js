@@ -88,8 +88,9 @@ Loads the map
 
 $(function() {
     var mapID = $('#favoriteMap').attr('mapId');
-    initMap(mapID);
     $('.modalMap').modal();
+    initMap(mapID);
+
 });
 
 /*Creates main map*/
@@ -107,6 +108,12 @@ function initMap(mapID) {
     loadPoints(mapID);
     infoWindow = new google.maps.InfoWindow;
     curentLocation();
+    $('#editMap').on('click', function(event) {
+        $('.modal-backdrop').removeClass("modal-backdrop");
+        $('.viewMap')
+            .empty()
+            .load('../maps/edit/' + mapID);
+    })
 }
 
 /*Location Error handle*/
