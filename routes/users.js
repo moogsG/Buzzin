@@ -34,6 +34,12 @@ usersRoutes.get('/register', (req, res) => {
 usersRoutes.get('/login', (req, res) => {
   res.render('./partials/users/_login');
 });
+usersRoutes.get('/show', (req, res) => {
+  let templateVars = {
+    user: req.session.username
+  }
+  res.render('./partials/users/_userShow', templateVars);
+});
 
 /*Login
  *******
@@ -56,10 +62,10 @@ const login = (req, res) => {
           req.session.username = login[0].user_name;
           console.log(req.session.username);
 
-          res.render('index', templateVars)
+          res.redirect('/')
         } else {
           console.log('Passwords do not match!');
-          res.render('./partials/users/_userShow'); //Need to add error
+          res.redirect(' /'); //Need to add error
         }
       })
       .catch((err) => {
@@ -67,16 +73,9 @@ const login = (req, res) => {
       });
   } else {
     console.log('Already logged in!');
-    res.render('index', templateVars); //Need to add error
+    res.redirect('/'); //Need to add error
   }
 };
-
-usersRoutes.get('/show', (req, res) => {
-  let templateVars = {
-    user: req.session.username
-  }
-  res.render('./partials/users/_userShow', templateVars);
-});
 
 usersRoutes.post('/login', (req, res) => {
   login(req, res);
@@ -85,7 +84,6 @@ usersRoutes.post('/login', (req, res) => {
 /*Register
  **********
  */
-
 usersRoutes.post('/register', (req, res) => {
 
   /*NEEDS CHECKS FOR SHIT*/
