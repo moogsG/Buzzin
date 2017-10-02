@@ -4,7 +4,7 @@ placeMarkers = function(point) {
     var content = '<div>' +
         '<h4>' + point.title + '</h4>' +
         '<p>' + point.description + '</p>' +
-        '<img src="' + point.img + '" width="50px" height="50px"/>' +
+        '<img src="' + point.image + '" width="50px" height="50px"/>' +
         '<p>' + point.address + '</p>' +
         '</div>';
     geocoder.geocode({
@@ -101,7 +101,7 @@ function initMap(mapID) {
         center: {
             lat: 51.044270,
             lng: -114.062019
-        },
+},
         zoom: 13,
         mapTypeId: 'roadmap'
     });

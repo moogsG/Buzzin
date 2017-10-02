@@ -1,9 +1,10 @@
 /*Declares Global Vars*/
 placeMarkers = function(point) {
+    console.log(point.description)
     var content = '<div>' +
         '<h4>' + point.title + '</h4>' +
-        '<p>' + point.description + '</p>' +
-        '<img src="' + point.img + '" width="50px" height="50px"/>' +
+        '<p>' + point['description'] + '</p>' +
+        '<img src="' + point.image + '" width="50px" height="50px"/>' +
         '<p>' + point.address + '</p>' +
         '</div>';
     geocoder.geocode({
@@ -119,9 +120,10 @@ function editMap(mapID) {
      ***********************
      */
     $('#newPoint').on('click', function(event) {
+
         event.preventDefault();
         $.post('/maps/newPoint/' + mapID, $("form").serialize());
-        $('.maps').empty();
+        $('.modal-backdrop').removeClass("modal-backdrop");
         $('.viewMap').load('../maps/edit/' + mapID);
     });
 }

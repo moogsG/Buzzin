@@ -110,7 +110,6 @@ mapRouter.post('/newPoint/:id', (req, res) => {
     knex('points').insert(values)
         .then((point) => {
             console.log('Created new point');
-            res.send(point);
         })
         .catch((err) => {
             console.error(err);

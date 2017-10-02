@@ -1,6 +1,6 @@
 <script src="/scripts/mapsEdit.js"></script>
 
-<div class="modal modalMapEdit text-center">
+<div class="modal modalMapEdit text-center " tabindex="-2">
   <div class="modal-dialog" role="document">
 
     <div class="modal-content">
@@ -16,9 +16,9 @@
             <label for="title"></label>
             <input class="form-control mr-sm-2" id="title" type="text" name="title" placeholder="Awesome Title">
             <label for="description"></label>
-            <input class="form-control mr-sm-2" id="description" type="description" name="description" placeholder="Describe me!">
+            <input class="form-control mr-sm-2" id="description" type="text" name="description" placeholder="Describe me!">
             <label for="image"></label>
-            <input class="form-control mr-sm-2" id="image" type="url" name="image" placeholder="http://">
+            <input class="form-control mr-sm-2" id="image" type="text" name="image" placeholder="http://">
             <label for="address"></label>
             <input class="form-control mr-sm-2" id="address" type="address" name="address" placeholder="address">
             <input class="form-control mr-sm-2" id="user" name="user" mapId="<%= map[0].id %>" type="hidden" value="<%= userId %>">
