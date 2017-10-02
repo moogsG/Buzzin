@@ -10,4 +10,5 @@ $(function() {
         event.preventDefault();
         $.post('/maps/newMap', $('form'));
     });
+
 })

@@ -74,9 +74,9 @@ mapRouter.get('/show/:id', (req, res) => {
             let templateVars = {
                 user: req.session.username,
                 userId: req.session.userid,
-                map: map
+                maps: map
             };
-            res.render('./partials/maps/_showMaps', templateVars);
+            res.render('./partials/maps/_showMap', templateVars);
         });
 });
 
@@ -84,7 +84,9 @@ mapRouter.post('/newMap', (req, res) => {
     console.log(req.session.userid);
     let values = {
         user_id: req.session.userid,
-        map_name: req.body.name
+        map_name: req.body.name,
+        map_description: req.body.description,
+        map_image: req.body.img
     };
     knex('maps').insert(values)
         .catch((err) => {

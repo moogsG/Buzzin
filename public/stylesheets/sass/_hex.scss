@@ -87,6 +87,9 @@ body {
       transform: rotate3d(0, 0, 0, 0deg);
     }
   }
+  a {
+    color:#ffffff;
+  }
   h1, p {
     width: 100%;
     padding: 5%;
@@ -97,7 +100,7 @@ body {
     transition: transform .2s ease-out, opacity .3s ease-out;
   }
   h1 {
-    bottom: 50%;
+    bottom: 45%;
     padding-top: 50%;
     font-size: 1.5em;
     z-index: 1;
@@ -127,7 +130,7 @@ body {
 
 .hexLink {
   &:hover h1, &:focus h1, &:hover p, &:focus p {
-    background-color: black;
+    background-color: rgb(0, 0, 0);
     -webkit-transform: rotate3d(0, 1, 0, 180deg);
     -ms-transform: rotate3d(0, 1, 0, 180deg);
     transform: rotate3d(0, 1, 0, 180deg);
