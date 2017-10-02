@@ -46,9 +46,9 @@ gulp.task('watch', () => {
         .pipe(jshint.reporter('default'));
 
     gulp.watch(['*.js', 'routes/*.js', 'views/**/*.*', 'public/**/*.*']).on('change', (file) => {
-        server.changed(file.path);
 
         let server = livereload();
+        server.changed(file.path);
         gulp.src(['*.js', 'routes/*.js', 'public/*.js'], {
                 read: true
             })

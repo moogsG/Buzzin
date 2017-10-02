@@ -30,11 +30,19 @@ usersRoutes.get('/login', (req, res) => {
     res.render('./partials/users/_login');
 });
 usersRoutes.get('/show', (req, res) => {
-    let templateVars = {
-        user: req.session.username,
-        userId: req.session.userid
-    }
-    res.render('./partials/users/_userShow', templateVars);
+    knex('maps')
+        .select()
+        .where({
+            'user_id': req.session.userid
+        })
+        .then((userMaps) => {
+            let templateVars = {
+                maps: userMaps,
+                user: req.session.username,
+                userId: req.session.userid
+            }
+            res.render('./userShow', templateVars);
+        });
 });
 
 /*Login
@@ -52,7 +60,7 @@ const login = (req, res) => {
             })
             .then((login) => {
                 if (bcrypt.compareSync(req.body.password, login[0].password)) {
-                    req.session.username = login[0].username;
+                    req.session.username = login[0].user_name;
                     req.session.userid = login[0].id;
                     res.redirect('/')
                 } else {

@@ -9,7 +9,6 @@ const routes = require('./routes/index');
 const users = require('./routes/users');
 const maps = require('./routes/maps');
 
-
 const app = express();
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({
@@ -39,7 +38,6 @@ app.use('/', routes);
 app.use('/users', users);
 app.use('/maps', maps);
 
-
 /// catch 404 and forwarding to error handler
 
 app.use((req, res, next) => {
@@ -47,7 +45,5 @@ app.use((req, res, next) => {
     err.status = 404;
     next(err);
 });
-
-
 
 module.exports = app;

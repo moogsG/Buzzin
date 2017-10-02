@@ -10,8 +10,12 @@ mapRouter.use(bodyParser.urlencoded({
 
 /* GET Maps. */
 mapRouter.get('/', function(req, res) {
-
-    res.render('maps', {
+    let templateVars = {
+        user: req.session.username,
+        userId: req.session.userid,
+        map: data
+    };
+    res.render('maps', templateVars, {
         title: 'Express'
     });
 });
@@ -76,7 +80,7 @@ mapRouter.get('/show/:id', (req, res) => {
 });
 
 mapRouter.post('/newMap', (req, res) => {
-
+    console.log(req.session.userid);
     let values = {
         user_id: req.session.userid,
         map_name: req.body.name
