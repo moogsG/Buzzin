@@ -30,7 +30,7 @@ placeMarkers = function (point) {
 loadPoints = function (mapID) {
   $.get('/maps/' + mapID + '/point', function(data) {
     for (point of data) {
-      console.log(point)
+
       placeMarkers(point);
     }
   });
@@ -104,7 +104,6 @@ function initMap(mapID) {
     zoom: 13,
     mapTypeId: 'roadmap'
   });
-  console.log(mapID)
   loadPoints(mapID);
   infoWindow = new google.maps.InfoWindow;
   curentLocation();

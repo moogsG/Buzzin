@@ -122,7 +122,7 @@ usersRoutes.post('/favorite', (req, res) => {
     map_id: req.body.map_id
   };
   knex('fav_maps')
-    .whereNotExists(function() {
+    .where(() => {
       knex('fav_maps').where({
         'user_id': values.user_id,
         'map_id': values.map_id
@@ -132,8 +132,9 @@ usersRoutes.post('/favorite', (req, res) => {
       res.render('./partials/maps/_showMaps');
       console.error(err);
     })
-    .then(() => {
-      knex.insert(values).into('fav_maps');
+    .then((data) => {
+        console.log(data);
+      //knex.insert(values).into('fav_maps');
     })
     .then(() => {
       console.log('Added Favorite');

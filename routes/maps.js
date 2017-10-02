@@ -22,39 +22,39 @@ mapRouter.get('/', function(req, res) {
 });
 
 mapRouter.get('/edit/:id', (req, res) => {
-    if (!req.params.id) {
-        console.log('no id')
-    } else {
-        knex('maps').select()
-            .where({
-                'id': req.params.id
-            })
-            .catch((err) => {
-                console.error(err);
-            })
-            .then((data) => {
-                let templateVars = {
+  if (!req.params.id) {
+    console.log('no id')
+  } else {
+    knex('maps').select()
+      .where({
+        'id': req.params.id
+      })
+      .catch((err) => {
+        console.error(err);
+      })
+      .then((data) => {
+        console.log('foo')
+        let templateVars = {
 
-                    map: data
-                };
-                console.log(data);
-                res.render('./partials/maps/_editMaps', templateVars);
-            });
-    }
+          map: data
+        };
+        res.render('./partials/maps/_editMaps', templateVars);
+      });
+  }
 });
 
 mapRouter.get('/:id/point', (req, res) => {
-    knex('points').select()
-        .where({
-            'map_id': req.params.id
-        })
-        .then((data) => {
-            let points = data;
-            res.send(points);
-        })
-        .catch((err) => {
-            console.error(err);
-        });
+  knex('points').select()
+    .where({
+      'map_id': req.params.id
+    })
+    .then((data) => {
+      let points = data;
+      res.send(data)
+    })
+    .catch((err) => {
+      console.error(err);
+    });
 });
 
 mapRouter.get('/new', (req, res) => {
@@ -62,22 +62,20 @@ mapRouter.get('/new', (req, res) => {
 });
 
 mapRouter.get('/show/:id', (req, res) => {
-    knex('maps').select()
-        .where({
-            'id': req.params.id
-        })
-        .catch((err) => {
-            console.error(err);
-        })
-        .then((data) => {
-            let templateVars = {
-                user: req.session.username,
-                map: data
-            };
-            console.log(templateVars);
-            res.render('./partials/maps/_showMaps', templateVars);
-        });
-
+  knex('maps').select()
+    .where({
+      'id': req.params.id
+    })
+    .catch((err) => {
+      console.error(err);
+    })
+    .then((map) => {
+      let templateVars = {
+        user: req.session.username,
+        map: map
+      };
+      res.render('./partials/maps/_showMaps', templateVars);
+    });
 });
 
 mapRouter.post('/newMap', (req, res) => {
