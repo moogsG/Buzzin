@@ -80,8 +80,7 @@ mapRouter.get('/show/:id', (req, res) => {
         });
 });
 
-mapRouter.post('/newMap', (req, res) => { <<
-    << << < HEAD
+mapRouter.post('/newMap', (req, res) => {
     console.log(req.session.userid);
     let values = {
         user_id: req.session.userid,
@@ -96,24 +95,8 @@ mapRouter.post('/newMap', (req, res) => { <<
         })
         .then(() => {
             res.redirect('/')
-        }); ===
-    === =
+        });
 
-    let values = {
-        user_id: req.session.userid,
-        map_name: req.body.name
-    };
-    knex('maps').insert(values)
-        .catch((err) => {
-            console.error(err);
-        })
-        .then(() => {
-            console.log('Created new map');
-        })
-        .then(() => {
-            res.redirect('/')
-        }); >>>
-    >>> > e33dc0d7b061502ca0822043c3c3af10bcd216b5
 });
 
 mapRouter.post('/newPoint/:id', (req, res) => {
