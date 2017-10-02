@@ -1,7 +1,3 @@
-* {
-    margin: 0;
-    padding: 0;
-}
 
 body {
     background: #ffffff;
@@ -67,43 +63,6 @@ body {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*** HEX CONTENT **********************************************************************/
 
 .hex img {
@@ -121,7 +80,7 @@ body {
     background-color: black;
     left: -100%;
     right: -100%;
-    width: auto;
+    width: 100%;
     height: 100%;
     margin: 0 auto;
     -webkit-transform: rotate3d(0, 0, 0, 0deg);
@@ -129,10 +88,10 @@ body {
     transform: rotate3d(0, 0, 0, 0deg);
 }
 
-.hex h1,
-.hex p {
+.hex #hexh1,
+.hex #hexp {
     width: 100%;
-    padding: 5%;
+    padding-top: 100px;
     box-sizing: border-box;
     background-color: black;
     font-weight: 300;
@@ -140,8 +99,8 @@ body {
     transition: transform .2s ease-out, opacity .3s ease-out;
 }
 
-.hex h1 {
-    bottom: 50%;
+.hex #hexh1 {
+    bottom: 46%;
     padding-top: 50%;
     font-size: 1.5em;
     z-index: 1;
@@ -150,7 +109,7 @@ body {
     transform: translate3d(0, -100%, 0);
 }
 
-.hex h1::after {
+.hex #hexh1::after {
     content: '';
     position: absolute;
     bottom: 0;
@@ -160,7 +119,7 @@ body {
     border-bottom: 1px solid #fff;
 }
 
-.hex p {
+.hex #hexp {
     top: 50%;
     padding-bottom: 50%;
     -webkit-transform: translate3d(0, 100%, 0);
@@ -209,10 +168,10 @@ body {
 
 /*** HOVER EFFECT  **********************************************************************/
 
-.hexLink:hover h1,
-.hexLink:focus h1,
-.hexLink:hover p,
-.hexLink:focus p,
+.hexLink:hover #hexh1,
+.hexLink:focus #hexh1,
+.hexLink:hover #hexp,
+.hexLink:focus #hexp,
 .hex:hover img,
 .hex:focus img {
     background-color: black;
@@ -225,52 +184,14 @@ body {
     backface-visibility: hidden;
 }
 
-.hexLink:hover h1,
-.hexLink:focus h1,
-.hexLink:hover p,
-.hexLink:focus p {
+.hexLink:hover #hexh1,
+.hexLink:focus #hexh1,
+.hexLink:hover #hexp,
+.hexLink:focus #hexp {
     -webkit-transform: translate3d(0, 0, 0);
     -ms-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /*** HEXAGON SIZING AND EVEN ROW INDENTATION *****************************************************************/
 
@@ -344,26 +265,6 @@ body {
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* Add a black background color to the top navigation */
 
 .topnav {
@@ -374,26 +275,6 @@ body {
     z-index: 999;
     width: 100%;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* Style the links inside the navigation bar */
 
@@ -417,28 +298,6 @@ body {
     font-size: 17px;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* Change the color of links on hover */
 
 .topnav a:hover {
@@ -450,26 +309,6 @@ body {
     background-color: #242526;
     color: white;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* Add a color to the active/current link */
 
