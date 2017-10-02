@@ -4,4 +4,23 @@ $(function() {
         $('.viewMap').empty();
         $('.viewMap').load('../maps/show/' + mapId);
     })
+
+    $('#mapsUser').on('click', function(event) {
+        $('.maps').empty();
+        $('.maps').load('../users/show');
+    })
+    $('#mapsFav').on('click', function(event) {
+        $('.maps').empty();
+        $('.viewMap').load('../users/fav');
+    })
+    $('#mapsEdited').on('click', function(event) {
+        var mapId = $(this).attr('mapId');
+        $('.maps').empty();
+        $('.viewMap').load('../maps/show/' + mapId);
+    })
+    $('.#edit').on('click', function(event) {
+        var mapId = $(this).attr('mapId');
+        $('.maps').empty();
+        $('.viewMap').load('../maps/show/' + mapId);
+    })
 })

@@ -44,6 +44,32 @@ usersRoutes.get('/show', (req, res) => {
             res.render('./userShow', templateVars);
         });
 });
+usersRoutes.get('/fav', (req, res) => {
+    knex('fav_maps')
+        .select('map_id')
+        .where({
+            'user_id': req.session.userid
+        })
+        .then((favMap) => {
+            for (let map of favMap) {
+
+                knex('maps')
+                    .select()
+                    .where({
+                        'id': map.map_id
+                    })
+                    .then((maps) => {
+                        let templateVars = {
+                            maps: maps,
+                            user: req.session.username,
+                            userId: req.session.userid
+                        }
+                        res.render('./userShow', templateVars);
+                    })
+            }
+        });
+
+});
 /*Login
  *******
  *Could be put request

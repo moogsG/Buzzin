@@ -3,13 +3,22 @@
 
 <head>
     <% include ./partials/_header %>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBK7BCsfqIsm19orAsbdqLqYCODKv-nYA4&libraries=places"></script>
 </head>
 <body>
     <% include ./partials/_nav %>
-    <% include ./partials/maps/_createMaps %>
         <div class="container">
+    <% include ./partials/maps/_createMaps %>
+<ul class="nav nav-pills">
+  <li role="presentation" id="mapsUser" class="active"><a href="#"><%= user %> Maps</a></li>
+  <li role="presentation" id="mapsFav" ><a href="#">Favorite Map</a></li>
+  <li role="presentation" id="mapsEdited" ><a href="#">Edited Maps</a></li>
+    <li role="presentation" id="edit" ><a href="#">Edit Maps</a></li>
+</ul>
 
+    <div class="maps">
     <% include ./partials/maps/_showMaps %>
+    </div>
         </div>
         <div class="viewMap"></div>
 </body>
