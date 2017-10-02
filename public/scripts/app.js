@@ -15,7 +15,6 @@ function createHexElement(map_name, map_description, user_name) {
   return $list;
 }
 
-
 function get_map(users) {
   knex('users').select('map_name', 'map_description', 'user_name')
     .innerJoin('maps', 'users.id', 'maps.user_id').where({

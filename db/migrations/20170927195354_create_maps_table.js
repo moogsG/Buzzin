@@ -11,13 +11,15 @@ exports.up = function(knex, Promise) {
     }),
     knex.schema.createTable('maps', (table) => {
       table.increments();
-      table.string('user_id');
+      table.integer('user_id');
       table.string('map_name');
+      table.string('map_description');
+      table.string('map_image');
     }),
     knex.schema.createTable('points', (table) => {
       table.increments();
-      table.string('user_id');
-      table.string('map_id');
+      table.integer('user_id');
+      table.integer('map_id');
       table.string('title');
       table.string('description');
       table.string('image');
@@ -25,8 +27,8 @@ exports.up = function(knex, Promise) {
     }),
     knex.schema.createTable('fav_maps', (table) => {
       table.increments();
-      table.string('user_id');
-      table.string('map_id');
+      table.integer('user_id');
+      table.integer('map_id');
     })
 
   ])
