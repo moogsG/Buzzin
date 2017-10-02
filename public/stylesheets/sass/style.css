@@ -89,6 +89,9 @@ body {
     -ms-transform: rotate3d(0, 0, 0, 0deg);
     transform: rotate3d(0, 0, 0, 0deg); }
 
+.hex a {
+  color: #ffffff; }
+
 .hex h1, .hex p {
   width: 100%;
   padding: 5%;
@@ -99,7 +102,7 @@ body {
   transition: transform .2s ease-out, opacity .3s ease-out; }
 
 .hex h1 {
-  bottom: 50%;
+  bottom: 45%;
   padding-top: 50%;
   font-size: 1.5em;
   z-index: 1;

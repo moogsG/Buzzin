@@ -29,7 +29,7 @@ usersRoutes.get('/register', (req, res) => {
 usersRoutes.get('/login', (req, res) => {
     res.render('./partials/users/_login');
 });
-/*usersRoutes.get('/show', (req, res) => {
+usersRoutes.get('/show', (req, res) => {
     knex('maps')
         .select()
         .where({
@@ -44,7 +44,6 @@ usersRoutes.get('/login', (req, res) => {
             res.render('./userShow', templateVars);
         });
 });
-*/
 /*Login
  *******
  *Could be put request
