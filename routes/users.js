@@ -31,7 +31,8 @@ usersRoutes.get('/login', (req, res) => {
 });
 usersRoutes.get('/show', (req, res) => {
     let templateVars = {
-        user: req.session.username
+        user: req.session.username,
+        userId: req.session.userid
     }
     res.render('./partials/users/_userShow', templateVars);
 });
@@ -51,8 +52,8 @@ const login = (req, res) => {
             })
             .then((login) => {
                 if (bcrypt.compareSync(req.body.password, login[0].password)) {
-                    req.session.username = login[0].id;
-                    console.log(req.session.username);
+                    req.session.username = login[0].username;
+                    req.session.userid = login[0].id;
                     res.redirect('/')
                 } else {
                     console.log('Passwords do not match!');
