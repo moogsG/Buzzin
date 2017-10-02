@@ -8,15 +8,15 @@ const gulp = require('gulp'),
     sass = require('gulp-sass');
 //register nodemon task
 gulp.task('nodemon', () => {
-    nodemon({
-            script: './bin/www',
-            env: {
-                'NODE_ENV': 'development'
-            }
-        })
-        .on('restart', () => {
-            console.log('restarted');
-        });
+  nodemon({
+      script: './bin/www',
+      env: {
+        'NODE_ENV': 'development'
+      }
+    })
+    .on('restart', () => {
+      console.log('restarted');
+    });
 });
 
 //SASS
@@ -32,18 +32,18 @@ gulp.task('sass.watch', () => {
 
 // Rerun the task when a file changes
 gulp.task('watch', () => {
-    let server = livereload();
-    gulp.src(['*.js', 'routes/*.js', 'public/*.js'], {
-            read: true
-        })
-        .pipe(watch({
-            emit: 'all'
-        }))
-        .pipe(jshint())
-        .pipe(jshint.reporter('default'));
+  let server = livereload();
+  gulp.src(['*.js', 'routes/*.js', 'public/*.js'], {
+      read: true
+    })
+    .pipe(watch({
+      emit: 'all'
+    }))
+    .pipe(jshint())
+    .pipe(jshint.reporter('default'));
 
-    gulp.watch(['*.js', 'routes/*.js', 'views/**/*.*', 'public/**/*.*']).on('change', (file) => {
-        server.changed(file.path);
+  gulp.watch(['*.js', 'routes/*.js', 'views/**/*.*', 'public/**/*.*']).on('change', (file) => {
+    server.changed(file.path);
 
     });
 
@@ -52,9 +52,9 @@ gulp.task('watch', () => {
 
 //lint js files
 gulp.task('lint', () => {
-    gulp.src(['*.js', 'routes/*.js', 'public/*.js'])
-        .pipe(jshint())
-        .pipe(jshint.reporter('default'));
+  gulp.src(['*.js', 'routes/*.js', 'public/*.js'])
+    .pipe(jshint())
+    .pipe(jshint.reporter('default'));
 });
 
 
