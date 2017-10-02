@@ -11,7 +11,7 @@
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#"><span class="glyphicon glyphicon-user"></span>&nbsp;<%=user%></a></li>
+                    <li><a href="/users/show"><span class="glyphicon glyphicon-user"></span>&nbsp;<%=user%></a></li>
                     <li data-toggle="modal" data-target="#niceZoomIn"><a href="/users/logout"><span class="glyphicon glyphicon-log-in"></span>&nbsp;LOGOUT</a></li>
                 </ul>
             </div>
@@ -37,7 +37,7 @@
                     </div>
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="#">HOME</a></li>
-                        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">ABOUT</a>
+                        <li data-toggle="modal" data-target=".about"><a href="#">ABOUT</a>
                         </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
@@ -47,7 +47,7 @@
                 </div>
                 <div class="modal fade login-page" id="niceZoomIn" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                     <div class="modal-dialog" role="document">
-                        <div class="modal-content" style="background-color: #9fa1a5;">
+                        <div class="modal-content" style="background-color: #eaedf2;">
                             <div class="modal-header" style="background-color:#242526;color:white;">
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                 <h4 class="modal-title" id="myModalLabel" style="font-weight: bold; font-size:1.7em; text-align: center;">LOGIN</h4>
@@ -59,6 +59,19 @@
                     </div>
                 </div>
                 <div class="modal fade  register-page" id="niceZoomIn" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content" style="background-color: #eaedf2;width:150%;">
+                            <div class="modal-header" style="background-color:#242526;color:white;">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="myModalLabel" style="font-weight: bold; font-size:1.7em; text-align: center;">REGISTER</h4>
+                            </div>
+                            <div class="modal-footer" style="margin-right:7%;">
+                                <% include ./users/_userRegister %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade  about" id="niceZoomIn" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content" style="background-color: #9fa1a5;">
                             <div class="modal-header" style="background-color:#242526;color:white;">
