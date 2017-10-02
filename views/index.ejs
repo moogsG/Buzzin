@@ -11,22 +11,23 @@
 </head>
 
 <body>
-    <div>
-        <ul class="hexGrid">
-            <%for (map of maps) {%>
-                <li class="hex">
-                    <div class="hexIn">
-                        <a class="hexLink" href="maps/show/<%map.id%>">
+    <% include ./partials/_nav %>
+        <div>
+            <ul class="hexGrid">
+                <%for (map of maps) {%>
+                    <li class="hex">
+                        <div class="hexIn">
+                            <a class="hexLink" href="maps/show/<%map.id%>">
                             <img src='<%=maps.map_image%>' />
                             <h1><%=maps.map_name%></h1>
                             <p><%=maps.map_description%></p>
                             <p><
                         </a>
-                    </div>
-                </li>
-            <%}%>
-        </ul>
-    </div>
+                        </div>
+                    </li>
+                    <%}%>
+            </ul>
+        </div>
 </body>
 
 </html>

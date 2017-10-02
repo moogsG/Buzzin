@@ -6,13 +6,14 @@ const knex = require('knex')(require('../knexfile').development);
 /* GET home page. */
 router.get('/', function(req, res) {
 
-  knex('maps').select()
-    .then((maps) => {
-      let templateVars = {
-        maps: maps
-      }
-      res.render('index', templateVars)
-    })
+    knex('maps').select()
+        .then((maps) => {
+            let templateVars = {
+                maps: maps,
+                user: null
+            }
+            res.render('index', templateVars)
+        })
 })
 
 module.exports = router;
