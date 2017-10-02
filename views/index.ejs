@@ -9,6 +9,7 @@
     <title></title>
     <% include ./partials/_header %>
 </head>
+
 <body>
     <% include ./partials/_nav %>
         <div>
@@ -17,9 +18,9 @@
                     <li class="hex">
                         <div class="hexIn">
                             <a class="hexLink" href="maps/show/<%map.id%>">
-                            <img src='<%=maps.map_image%>' />
-                            <h1><%=maps.map_name%></h1>
-                            <p><%=maps.map_description%></p>
+                            <img src='<%=map.map_image%>' />
+                            <h1><%=map.map_name%></h1>
+                            <p><%=map.map_description%></p>
                             <p><
                         </a>
                         </div>
