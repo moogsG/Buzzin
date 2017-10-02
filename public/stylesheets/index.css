@@ -1,7 +1,7 @@
-
 body {
     background: #ffffff;
-    height, width: 100%;
+    height,
+    width: 100%;
 }
 
 .hexGrid {
@@ -243,6 +243,14 @@ body {
 
 
 
+
+
+
+
+
+
+
+
 /* Add a black background color to the top navigation */
 
 .topnav {
@@ -253,6 +261,14 @@ body {
     z-index: 999;
     width: 100%;
 }
+
+
+
+
+
+
+
+
 
 
 
@@ -314,6 +330,14 @@ body {
 
 
 
+
+
+
+
+
+
+
+
 /* Change the color of links on hover */
 
 .topnav a:hover {
@@ -325,6 +349,14 @@ body {
     background-color: #242526;
     color: white;
 }
+
+
+
+
+
+
+
+
 
 
 
