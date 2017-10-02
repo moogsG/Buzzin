@@ -56,7 +56,7 @@ const login = (req, res) => {
           req.session.username = login[0].user_name;
           console.log(req.session.username);
 
-          res.render('index', templatVars)
+          res.render('index', templateVars)
         } else {
           console.log('Passwords do not match!');
           res.render('./partials/users/_userShow'); //Need to add error
@@ -67,15 +67,15 @@ const login = (req, res) => {
       });
   } else {
     console.log('Already logged in!');
-    res.render('index', templatVars); //Need to add error
+    res.render('index', templateVars); //Need to add error
   }
 };
 
 usersRoutes.get('/show', (req, res) => {
-  let templatVars = {
+  let templateVars = {
     user: req.session.username
   }
-  res.render('./partials/users/_userShow', templatVars);
+  res.render('./partials/users/_userShow', templateVars);
 });
 
 usersRoutes.post('/login', (req, res) => {
