@@ -66,46 +66,6 @@ body {
     transform: skewY(-30deg) rotate3d(0, 0, 1, 60deg);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*** HEX CONTENT **********************************************************************/
-
 .hex img {
     left: -100%;
     right: -100%;
@@ -141,7 +101,7 @@ body {
 }
 
 .hex h1 {
-    bottom: 50%;
+    bottom: 47.3%;
     padding-top: 50%;
     font-size: 1.5em;
     z-index: 1;
@@ -172,43 +132,6 @@ body {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*** HOVER EFFECT  **********************************************************************/
-
 .hexLink:hover h1,
 .hexLink:focus h1,
 .hexLink:hover p,
@@ -236,43 +159,6 @@ body {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*** HEXAGON SIZING AND EVEN ROW INDENTATION *****************************************************************/
 
 @media (min-width:1201px) {
     /* <- 5-4  hexagons per row */
@@ -361,9 +247,6 @@ body {
 
 
 
-
-
-
 /* Add a black background color to the top navigation */
 
 .topnav {
@@ -374,6 +257,9 @@ body {
     z-index: 999;
     width: 100%;
 }
+
+
+
 
 
 
@@ -432,13 +318,6 @@ body {
 
 
 
-
-
-
-
-
-
-
 /* Change the color of links on hover */
 
 .topnav a:hover {
@@ -466,14 +345,38 @@ body {
 
 
 
-
-
-
-
-
 /* Add a color to the active/current link */
 
 .topnav a.active {
     background-color: white;
     color: white;
+}
+
+.login-page-top {
+    color: white;
+    text-align: center;
+    background-color: #242526;
+    height: 2.89em;
+}
+
+.w3-modal-content {
+    width: 100%;
+}
+
+#niceZoomIn.modal.fade .modal-dialog {
+    top: 100px;
+    -moz-transform: scale(1) rotate(0deg) translateX(2px) translateY(20px);
+    -webkit-transform: scale(1) rotate(0deg) translateX(2px) translateY(20px);
+    -o-transform: scale(1) rotate(0deg) translateX(2px) translateY(20px);
+    -ms-transform: scale(1) rotate(0deg) translateX(2px) translateY(20px);
+    transform: scale(1) rotate(0deg) translateX(2px) translateY(20px);
+}
+
+#niceZoomIn.modal.fade.in .modal-dialog {
+    -moz-transform: scale(1.1) translateX(2px) translateY(20px);
+    -webkit-transform: scale(1.1) translateX(2px) translateY(20px);
+    -o-transform: scale(1.1) translateX(2px) translateY(20px);
+    -ms-transform: scale(1.1) translateX(2px) translateY(20px);
+    transform: scale(1.1) translateX(2px) translateY(20px);
+    opacity: 1;
 }

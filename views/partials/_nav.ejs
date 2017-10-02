@@ -1,6 +1,41 @@
-<% if (user) { %>
+<% if (!user) { %>
     <% include ./_header %>
-        <div class="topnav" id="myTopnav">
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">BUZZN</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">HOME</a></li>
+                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">ABOUT</a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> SIGN UP</a></li>
+                    <li data-toggle="modal" data-target="#niceZoomIn"><a href="#"><span class="glyphicon glyphicon-log-in"></span> LOGIN</a></li>
+                </ul>
+            </div>
+            <div class="modal fade  " id="niceZoomIn" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">LOGIN</h4>
+                        </div>
+                        <div class="modal-body">
+                            <img width="100%" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/172203/8.jpg" alt="" />
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <% } else { %>
+            <% };  %>
+                <!-- <div class="topnav" id="myTopnav">
             <a>BUZZN</a>
             <a>HOME</a>
             <a>ABOUT</a>
@@ -20,7 +55,7 @@
                 </div>
             </div>
         </div>
-        <% } else { %>
+
             <div class="topnav" id="myTopnav">
                 <a>BUZZN</a>
                 <a>HOME</a>
@@ -29,8 +64,8 @@
                 <a href="#login" onclick="document.getElementById('login').style.display='block'" style="float:right;">LOGIN</a>
             </div>
             <div id="signup" class="w3-modal">
-                <div class="w3-modal-content w3-animate-zoom">
-                    <div class="w3-container w3-black">
+                <div class="w3-animate-zoom">
+                    <div class="register-page1">
                         <span onclick="document.getElementById('signup').style.display='none'; " class="w3-button w3-display-topright w3-large">x</span>
                         <h1>Sign Up</h1>
                     </div>
@@ -41,13 +76,12 @@
             </div>
             <div id="login" class="w3-modal">
                 <div class="w3-modal-content w3-animate-zoom">
-                    <div class="w3-container w3-black">
+                    <div class="login-page-top">
                         <span onclick="document.getElementById('login').style.display='none'" class="w3-button w3-display-topright w3-large">x</span>
                         <h1>Login</h1>
                     </div>
-                    <div class="w3-container">
+                    <div class="login-pagebottom">
                         <% include ./users/_login %>
                     </div>
                 </div>
-            </div>
-            <% };  %>
+            </div> -->
