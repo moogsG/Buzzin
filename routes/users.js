@@ -12,33 +12,28 @@ const cookieSession = require('cookie-session');
 const knex = require('knex')(require('../knexfile').development);
 
 usersRoutes.use(bodyParser.urlencoded({
-  extended: true
-}));
-
-usersRoutes.use(cookieSession({
-  name: 'session',
-  keys: ['key1', 'key2']
+    extended: true
 }));
 
 /* GET users listing. */
 usersRoutes.get('/', (req, res) => {
-  res.render('users');
+    res.render('users');
 });
 
 /* GET partials
  ***************
  */
 usersRoutes.get('/register', (req, res) => {
-  res.render('./partials/users/_userRegister');
+    res.render('./partials/users/_userRegister');
 });
 usersRoutes.get('/login', (req, res) => {
-  res.render('./partials/users/_login');
+    res.render('./partials/users/_login');
 });
 usersRoutes.get('/show', (req, res) => {
-  let templateVars = {
-    user: req.session.username
-  }
-  res.render('./partials/users/_userShow', templateVars);
+    let templateVars = {
+        user: req.session.username
+    }
+    res.render('./partials/users/_userShow', templateVars);
 });
 
 /*Login
@@ -47,38 +42,34 @@ usersRoutes.get('/show', (req, res) => {
  *Fix later
  */
 const login = (req, res) => {
-  let templateVars = {
-    user: req.session.username
-  }
-  if (!req.session.username) {
-    let email = req.body.email;
-    knex('users')
-      .select()
-      .where({
-        'email': email
-      })
-      .then((login) => {
-        if (bcrypt.compareSync(req.body.password, login[0].password)) {
-          req.session.username = login[0].user_name;
-          console.log(req.session.username);
-
-          res.redirect('/')
-        } else {
-          console.log('Passwords do not match!');
-          res.redirect(' /'); //Need to add error
-        }
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  } else {
-    console.log('Already logged in!');
-    res.redirect('/'); //Need to add error
-  }
+    if (!req.session.username) {
+        let email = req.body.email;
+        knex('users')
+            .select()
+            .where({
+                'email': email
+            })
+            .then((login) => {
+                if (bcrypt.compareSync(req.body.password, login[0].password)) {
+                    req.session.username = login[0].id;
+                    console.log(req.session.username);
+                    res.redirect('/')
+                } else {
+                    console.log('Passwords do not match!');
+                    res.redirect(' /'); //Need to add error
+                }
+            })
+            .catch((err) => {
+                console.error(err);
+            });
+    } else {
+        console.log('Already logged in!');
+        res.redirect('/'); //Need to add error
+    }
 };
 
 usersRoutes.post('/login', (req, res) => {
-  login(req, res);
+    login(req, res);
 });
 
 /*Register
@@ -86,61 +77,68 @@ usersRoutes.post('/login', (req, res) => {
  */
 usersRoutes.post('/register', (req, res) => {
 
-  /*NEEDS CHECKS FOR SHIT*/
+    /*NEEDS CHECKS FOR SHIT*/
 
-  let hash = bcrypt.hashSync(req.body.password, 10);
+    let hash = bcrypt.hashSync(req.body.password, 10);
 
-  let values = {
-    user_name: req.body.username,
-    password: hash,
-    email: req.body.email
-  };
+    let values = {
+        user_name: req.body.username,
+        password: hash,
+        email: req.body.email
+    };
 
-  knex('users').insert(values)
-    .then(() => {
-      console.log('Registered New User');
-    })
-    .catch((err) => {
-      console.error(err);
-    })
-    .then(() => {
-      login(req, res);
-    });
+    knex('users').insert(values)
+        .catch((err) => {
+            console.error(err);
+        })
+        .then(() => {
+            console.log('Registered New User');
+        })
+        .then(() => {
+            login(req, res);
+        });
 });
 
 usersRoutes.post('/favorite', (req, res) => {
-  let values = {
-    user_id: req.body.user_id,
-    map_id: req.body.map_id
-  };
-  knex('fav_maps')
-    .where(() => {
-      knex('fav_maps').where({
-        'user_id': values.user_id,
-        'map_id': values.map_id
-      });
-    })
-    .catch((err) => {
-      res.render('./partials/maps/_showMaps');
-      console.error(err);
-    })
-    .then((data) => {
-      console.log(data);
-      //knex.insert(values).into('fav_maps');
-    })
-    .then(() => {
-      console.log('Added Favorite');
-      res.render('./partials/maps/_showMaps');
-    });
+    let values = {
+        user_id: req.body.user_id,
+        map_id: req.body.map_id
+    };
+    knex('fav_maps')
+        .where({
+            'user_id': values.user_id,
+            'map_id': values.map_id
+        })
+        .catch((err) => {
+            res.render('./partials/maps/_showMaps');
+            console.error(err);
+        })
+        .then((data) => {
+            if (data[0]) {
+                if (data[0].user_id == values.user_id && data[0].map_id == values.map_id) {
+                    console.log('Data Exists');
+                } else {
+                    return knex('fav_maps').insert(values);
+                    console.log('Insert data');
+                }
+            } else {
+                return knex('fav_maps').insert(values);
+                console.log('Insert data');
+            }
+        })
+        .then(() => {
+            res.redirect('/');
+        })
 });
+
 /*Clears cookies username
  **************************
  *Clears username cookie
  *Returns to /urls
  */
 usersRoutes.get('/logout', (req, res) => {
-  req.session = null;
-  res.redirect('/');
+    req.session = null;
+    res.redirect('/');
 });
 
 module.exports = usersRoutes;

@@ -9,14 +9,15 @@ router.use(cookieSession({
 }));
 /* GET home page. */
 
-router.get('/', function (req, res) {
-  if (!req.session.user) {
-    req.session.user = null;
+router.get('/', function(req, res) {
+  if (!req.session.username) {
+    req.session.username = null;
   }
   knex('maps').select()
     .then((maps) => {
+      console.log(req.session.username)
       let templateVars = {
-        user: req.session.user,
+        user: req.session.username,
         maps: maps
       }
       res.render('index', templateVars)
