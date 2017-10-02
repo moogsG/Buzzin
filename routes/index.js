@@ -17,6 +17,7 @@ router.get('/', function(req, res) {
         .then((maps) => {
             let templateVars = {
                 user: req.session.username,
+                userId: req.session.userid,
                 maps: maps
             }
             res.render('index', templateVars);
