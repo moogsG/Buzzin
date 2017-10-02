@@ -7,12 +7,12 @@
                 </div>
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="#">HOME</a></li>
-                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">ABOUT</a>
+                    <li data-toggle="modal" data-target=".about-page"><a href="#">ABOUT</a>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="/users/show"><span class="glyphicon glyphicon-user"></span>&nbsp;<%=user%></a></li>
-                    <li data-toggle="modal" data-target="#niceZoomIn"><a href="/users/logout"><span class="glyphicon glyphicon-log-in"></span>&nbsp;LOGOUT</a></li>
+                    <li><a href="/users/show"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;<%= user.toUpperCase() %></a></li>
+                    <li data-toggle="modal" data-target="#niceZoomIn"><a href="/users/logout"><span class="glyphicon glyphicon-log-in"></span>&nbsp;&nbsp;LOGOUT</a></li>
                 </ul>
             </div>
             <div class="modal fade  " id="niceZoomIn" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -28,6 +28,19 @@
                     </div>
                 </div>
             </div>
+            <div class="modal fade  about-page" id="niceZoomIn" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class=" modal-header" style="background-color:#242526;color:white; ">
+                            <button type="button " class="close " data-dismiss="modal " aria-label="Close "><span aria-hidden="true ">&times;</span></button>
+                            <h4 class="modal-title " id="myModalLabel " style="font-weight: bold; font-size:1.7em; text-align: center; ">ABOUT</h4>
+                        </div>
+                        <div class="modal-footer " style="margin-right:7%; ">
+                            <span style="text-align: justify;">This is an app that lets you create your map and allows you to explore other user created map to find exactly what you're looking for.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </nav>
         <% } else {  %>
             <nav class="navbar navbar-inverse">
@@ -37,12 +50,12 @@
                     </div>
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="#">HOME</a></li>
-                        <li data-toggle="modal" data-target=".about"><a href="#">ABOUT</a>
+                        <li data-toggle="modal" data-target=".about-page"><a href="#">ABOUT</a>
                         </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li data-toggle="modal" data-target=".register-page"><a href="#"><span class="glyphicon glyphicon-user"></span>&nbsp;SIGN UP</a></li>
-                        <li data-toggle="modal" data-target=".login-page"><a href="#"><span class="glyphicon glyphicon-log-in"></span>&nbsp; LOGIN</a></li>
+                        <li data-toggle="modal" data-target=".register-page"><a href="#"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;SIGN UP</a></li>
+                        <li data-toggle="modal" data-target=".login-page"><a href="#"><span class="glyphicon glyphicon-log-in"></span>&nbsp;&nbsp; LOGIN</a></li>
                     </ul>
                 </div>
                 <div class="modal fade login-page" id="niceZoomIn" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -59,79 +72,79 @@
                     </div>
                 </div>
                 <div class="modal fade  register-page" id="niceZoomIn" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content" style="background-color: #eaedf2;width:150%;">
-                            <div class="modal-header" style="background-color:#242526;color:white;">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                <h4 class="modal-title" id="myModalLabel" style="font-weight: bold; font-size:1.7em; text-align: center;">REGISTER</h4>
+                    <div class="modal-dialog" role="document" style="margin-right:43%">
+                        <div class="modal-content" style="background-color: #eaedf2;width:150%;margin-right:60%">
+                            <div class=" modal-header " style="background-color:#242526;color:white; ">
+                                <button type="button " class="close " data-dismiss="modal " aria-label="Close "><span aria-hidden="true ">&times;</span></button>
+                                <h4 class="modal-title " id="myModalLabel " style="font-weight: bold; font-size:1.7em; text-align: center; ">REGISTER</h4>
                             </div>
-                            <div class="modal-footer" style="margin-right:7%;">
+                            <div class="modal-footer " style="margin-right:7%; ">
                                 <% include ./users/_userRegister %>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="modal fade  about" id="niceZoomIn" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal fade  about-page" id="niceZoomIn" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                     <div class="modal-dialog" role="document">
-                        <div class="modal-content" style="background-color: #9fa1a5;">
-                            <div class="modal-header" style="background-color:#242526;color:white;">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                <h4 class="modal-title" id="myModalLabel" style="font-weight: bold; font-size:1.7em; text-align: center;">REGISTER</h4>
+                        <div class="modal-content">
+                            <div class=" modal-header" style="background-color:#242526;color:white; ">
+                                <button type="button " class="close " data-dismiss="modal " aria-label="Close "><span aria-hidden="true ">&times;</span></button>
+                                <h4 class="modal-title " id="myModalLabel " style="font-weight: bold; font-size:1.7em; text-align: center; ">ABOUT</h4>
                             </div>
-                            <div class="modal-footer" style="margin-right:7%;">
-                                <% include ./users/_userRegister %>
+                            <div class="modal-footer " style="margin-right:7%; ">
+                                <span style="text-align: left;">This is an app that lets you create your map and allows you to explore other user created map to find exactly what you're looking for. You can also favorite other maps!</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </nav>
             <% };  %>
-                <!-- <div class="topnav" id="myTopnav">
+                <!-- <div class="topnav " id="myTopnav ">
             <a>BUZZN</a>
             <a>HOME</a>
             <a>ABOUT</a>
-            <a href="/users/logout" style="float:right;">LOGOUT</a>
-            <a href="#map" onclick="document.getElementById('usermap').style.display='block'" style="float:right;">CREATE MAP</a>
-            <a href="/users/show" style="float:right;">PROFILE</a>
-            <a class="name" style="float:right;">Welcome <%= user %>!</a>
+            <a href="/users/logout " style="float:right; ">LOGOUT</a>
+            <a href="#map " onclick="document.getElementById( 'usermap').style.display='block' " style="float:right; ">CREATE MAP</a>
+            <a href="/users/show " style="float:right; ">PROFILE</a>
+            <a class="name " style="float:right; ">Welcome <%= user %>!</a>
         </div>
-        <div id="usermap" class="w3-modal">
-            <div class="w3-modal-content w3-animate-zoom">
-                <div class="w3-container w3-black">
-                    <span onclick="document.getElementById('usermap').style.display='none'; " class="w3-button w3-display-topright w3-large">x</span>
+        <div id="usermap " class="w3-modal ">
+            <div class="w3-modal-content w3-animate-zoom ">
+                <div class="w3-container w3-black ">
+                    <span onclick="document.getElementById( 'usermap').style.display='none' ; " class="w3-button w3-display-topright w3-large ">x</span>
                     <h1>Create a Map</h1>
                 </div>
-                <div class="w3-container">
+                <div class="w3-container ">
                     <span>Hello World!</span>
                 </div>
             </div>
         </div>
 
-            <div class="topnav" id="myTopnav">
+            <div class="topnav " id="myTopnav ">
                 <a>BUZZN</a>
                 <a>HOME</a>
                 <a>ABOUT</a>
-                <a href="#signup" onclick="document.getElementById('signup').style.display='block'" style="float:right;">SIGN UP</a>
-                <a href="#login" onclick="document.getElementById('login').style.display='block'" style="float:right;">LOGIN</a>
+                <a href="#signup " onclick="document.getElementById( 'signup').style.display='block' " style="float:right; ">SIGN UP</a>
+                <a href="#login " onclick="document.getElementById( 'login').style.display='block' " style="float:right; ">LOGIN</a>
             </div>
-            <div id="signup" class="w3-modal">
-                <div class="w3-animate-zoom">
-                    <div class="register-page1">
-                        <span onclick="document.getElementById('signup').style.display='none'; " class="w3-button w3-display-topright w3-large">x</span>
+            <div id="signup " class="w3-modal ">
+                <div class="w3-animate-zoom ">
+                    <div class="register-page1 ">
+                        <span onclick="document.getElementById( 'signup').style.display='none' ; " class="w3-button w3-display-topright w3-large ">x</span>
                         <h1>Sign Up</h1>
                     </div>
-                    <div class="w3-container">
+                    <div class="w3-container ">
                         <% include ./users/_userRegister %>
                     </div>
                 </div>
             </div>
-            <div id="login" class="w3-modal">
-                <div class="w3-modal-content w3-animate-zoom">
-                    <div class="login-page-top">
-                        <span onclick="document.getElementById('login').style.display='none'" class="w3-button w3-display-topright w3-large">x</span>
+            <div id="login " class="w3-modal ">
+                <div class="w3-modal-content w3-animate-zoom ">
+                    <div class="login-page-top ">
+                        <span onclick="document.getElementById( 'login').style.display='none' " class="w3-button w3-display-topright w3-large ">x</span>
                         <h1>Login</h1>
                     </div>
-                    <div class="login-pagebottom">
+                    <div class="login-pagebottom ">
                         <% include ./users/_login %>
                     </div>
                 </div>
