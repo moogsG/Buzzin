@@ -1,16 +1,16 @@
 <script type="text/javascript" src="/scripts/users.js"></script>
-        <div>
-            <ul class="hexGrid">
-                <%for (map of maps) {%>
-                    <li class="hex">
-                        <div class="hexIn">
-                            <a class="hexLink" mapId="<%= map.id %>" href="#">
-                            <img src='<%=map.map_image%>' />
-                            <h1><%=map.map_name%></h1>
-                            <p><%=map.map_description%></p>
-                        </a>
-                        </div>
-                    </li>
-                    <%}%>
-            </ul>
+<div>
+  <ul class="hexGrid">
+    <%for (map of maps) {%>
+      <li class="hex">
+        <div class="hexIn">
+          <a class="hexLink" mapId="<%= map.id %>" href="#">
+            <img src='<%=map.map_image%>' />
+            <h1><%=map.map_name%></h1>
+            <p><%=map.map_description%></p>
+          </a>
         </div>
+      </li>
+    <%}%>
+  </ul>
+</div>

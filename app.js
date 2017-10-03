@@ -12,15 +12,15 @@ const maps = require('./routes/maps');
 const app = express();
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({
-    extended: true
+  extended: true
 }));
 
 /*Cookie Session
  ****************
  */
 app.use(cookieSession({
-    name: 'session',
-    keys: ['key1', 'key2']
+  name: 'session',
+  keys: ['key1', 'key2']
 }));
 
 /*View Engine
@@ -41,9 +41,9 @@ app.use('/maps', maps);
 /// catch 404 and forwarding to error handler
 
 app.use((req, res, next) => {
-    let err = new Error('Not Found');
-    err.status = 404;
-    next(err);
+  let err = new Error('Not Found');
+  err.status = 404;
+  next(err);
 });
 
 module.exports = app;

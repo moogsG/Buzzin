@@ -1,4 +1,4 @@
-$(function() {
+/*$(function() {
     $('#newMapBtn').on('click', function(event) {
         event.preventDefault();
 
@@ -12,3 +12,4 @@ $(function() {
     });
 
 })
+*/

@@ -1,4 +1,4 @@
-$(function() {
+/*$(function() {
   $('#registerBtn').on('click', function(event) {
     event.preventDefault();
 
@@ -26,3 +26,4 @@ $(function() {
   });
 
 })
+*/

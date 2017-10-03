@@ -1,26 +1,23 @@
-<!doctype html>
+<!DOCTYPE HTML>
 <html>
-
 <head>
     <% include ./partials/_header %>
 </head>
 
 <body>
     <% include ./partials/_nav %>
-        <div class="container">
-<ul class="nav nav-pills">
-  <li role="presentation" id="mapsUser" class="active"><a href="#"><%= user %> Maps</a></li>
-  <li role="presentation" id="mapsFav" ><a href="#">Favorite Map</a></li>
-  <li role="presentation" id="mapsEdited" ><a href="#">Edited Maps</a></li>
-<li role="presentation" id="edit" ><a href="#">Edit Maps</a></li>
-</ul>
-
-    <div class="maps">
-    <% include ./partials/maps/_showMaps %>
-    </div>
+    <div class="container">
+      <ul class="nav nav-pills">
+        <li role="presentation" id="mapsUser" class="active"><a href="#"><%= user %> Maps</a></li>
+        <li role="presentation" id="mapsFav" ><a href="#">Favorite Map</a></li>
+        <li role="presentation" id="mapsEdited" ><a href="#">Edited Maps</a></li>
+      </ul>
+      <div class="maps">
+      <% include ./partials/maps/_showMaps %>
+      </div>
         </div>
         <div class="viewMap">
-
+          <!-- Renders view -->
         </div>
 </body>
 
