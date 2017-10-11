@@ -93,6 +93,7 @@ function initMap(mapID) {
     zoom: 13,
     mapTypeId: 'roadmap'
   });
+  console.log("Map ID" + mapID)
   loadPoints(mapID);
   infoWindow = new google.maps.InfoWindow;
   curentLocation();
@@ -134,7 +135,7 @@ $(function() {
 Loads the map
 */
 
-  var mapID = $('#favoriteMap').attr('mapId');
+  var mapID = $('#map').attr('mapId');
   $('.modalMap').modal();
   initMap(mapID);
 
